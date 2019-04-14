@@ -20,7 +20,7 @@ FarmProduct ChickenKampung::getProduct(bool isKill){
 			return egg;
 		}
 		else
-			throw "ayam kampung ini tidak memiliki produk saat ini";
+			throw "ayam kampung ini tidak memiliki telur saat ini";
 	}
 }
 int ChickenKampung::getId(){
