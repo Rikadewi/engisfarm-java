@@ -6,9 +6,13 @@
 // LandType = barn, coop, grassLand
 
 package model.cell.land;
+import model.cell.Cell;
+//TODO:
+//import model.farmanimal.FarmAnimal;
+//import model.player.Player;
 
 //implementasi kurangin farm animal
-class Land extends Cell {
+public class Land extends Cell {
     //true jika ada rumput
     private boolean rumput; 
     private FarmAnimal animal;
@@ -53,10 +57,10 @@ class Land extends Cell {
             return 22;
         }
     }
-    public bool isRumput(){
+    public boolean isRumput(){
         return true;
     }
-    public void setRumput(bool b){
+    public void setRumput(boolean b){
         rumput = b;
     }
     public String getType(){

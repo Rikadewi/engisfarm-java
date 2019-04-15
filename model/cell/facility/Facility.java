@@ -6,8 +6,12 @@
 
 package model.cell.facility;
 
+import model.cell.Cell;
+//TODO:
+//import model.farmanimal.FarmAnimal;
+
 //facility merupakan turunan dari cell
-class Facility extends Cell{
+public abstract class Facility extends Cell{
     // mengembalikan NULL
     public FarmAnimal getAnimal(){
         return null;

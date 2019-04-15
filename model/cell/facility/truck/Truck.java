@@ -4,8 +4,11 @@
 
 package model.cell.facility.truck;
 
+import model.cell.facility.Facility;
+import model.EngiException;
+
 //truck merupakan turunan dari class facility
-class Truck extends Facility{
+public class Truck extends Facility{
     //melambangkan seberapa lama lagi hingga truck bisa dipakai
     private int ready;
 
@@ -21,7 +24,7 @@ class Truck extends Facility{
         return 21;
     }
     //mengembalikan true jika truck bisa dipakai
-    public bool isAvailable(){
+    public boolean isAvailable(){
         return (ready<=0);
     }
     //Untuk update keadaan truck
@@ -32,11 +35,12 @@ class Truck extends Facility{
             }
         }
     }
-    public void interactCell(){
+    public void interactCell() throws EngiException {
         if(isAvailable()){
             setNotReady();
         }else{
-            throw "Truck tidak ada";
+            EngiException e = new EngiException("Truck tidak ada");
+            throw e;
         }
     }
 }

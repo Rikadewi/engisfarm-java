@@ -5,9 +5,13 @@
 // CellType  = land, facility
 // UpdateType = makan, grow, readyTruck, removeAnimal, checkAnimal, canMove
 package model.cell;
-//import model.
+//TODO:
+//import model.player.Player;
+//import model.farmanimal.FarmAnimal;
 
-abstract public class Cell{
+import model.EngiException;
+
+public abstract class Cell{
     protected String cellType;
     protected Player engi;
     //0 untuk out of bound
@@ -43,7 +47,7 @@ abstract public class Cell{
     public void setPlayer(Player p){
         engi = p;
     }
-    public abstract void interactCell();
+    public abstract void interactCell() throws EngiException;
 
     //throw "Can't set facility" jika type cell facility
     public abstract void setAnimal(FarmAnimal f);

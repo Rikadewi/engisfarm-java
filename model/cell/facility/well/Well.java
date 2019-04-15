@@ -4,8 +4,12 @@
 
 package model.cell.facility.well;
 
+import model.cell.facility.Facility;
+//TODO:
+//import model.cell.player.Player;
+
 //Well merupakan turunan dari facility
-class Well extends Facility{
+public class Well extends Facility{
     public Well(){}
     //mengembalikan char yang akan diprint
     public int render(){

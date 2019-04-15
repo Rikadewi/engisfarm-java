@@ -11,8 +11,10 @@
 
 package model.cell.facility.mixer;
 
+import model.cell.facility.Facility;
+
 //mixer merupakan turunan dari facility
-class Mixer extends Facility{
+public class Mixer extends Facility{
     public Mixer(){}
     //mengembalikan int yang akan menjadi id 
     public int render(){
