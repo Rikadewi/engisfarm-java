@@ -5,6 +5,8 @@
 
 // LandType = barn, coop, grassLand
 
+package model.cell.land;
+
 //implementasi kurangin farm animal
 class Land extends Cell {
     //true jika ada rumput

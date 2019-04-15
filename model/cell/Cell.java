@@ -4,7 +4,8 @@
 
 // CellType  = land, facility
 // UpdateType = makan, grow, readyTruck, removeAnimal, checkAnimal, canMove
-package cell;
+package model.cell;
+//import model.
 
 abstract public class Cell{
     protected String cellType;
@@ -44,6 +45,6 @@ abstract public class Cell{
     }
     public abstract void interactCell();
 
-    //throw "Can't set Facility" jika type cell facility
+    //throw "Can't set facility" jika type cell facility
     public abstract void setAnimal(FarmAnimal f);
 }

@@ -4,6 +4,8 @@
 
 // FacilityType  = well, mixer, truck 
 
+package model.cell.facility;
+
 //facility merupakan turunan dari cell
 class Facility extends Cell{
     // mengembalikan NULL
@@ -12,6 +14,6 @@ class Facility extends Cell{
     }
     //throw
     public void setAnimal(FarmAnimal f){
-        throw "Can't set Facility";
+        throw "Can't set facility";
     }
 }

@@ -2,7 +2,9 @@
 
 // #include "facility.h"
 
-//Well merupakan turunan dari Facility
+package model.cell.facility.well;
+
+//Well merupakan turunan dari facility
 class Well extends Facility{
     public Well(){}
     //mengembalikan char yang akan diprint

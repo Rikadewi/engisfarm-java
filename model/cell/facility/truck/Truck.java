@@ -2,7 +2,9 @@
 
 // #include "facility.h"
 
-//Truck merupakan turunan dari class Facility
+package model.cell.facility.truck;
+
+//truck merupakan turunan dari class facility
 class Truck extends Facility{
     //melambangkan seberapa lama lagi hingga truck bisa dipakai
     private int ready;

@@ -9,6 +9,8 @@
 // #include "../../Product/Header/cowmilk.h"
 // #include "../../Product/Header/platypusmilk.h"
 
+package model.cell.facility.mixer;
+
 //mixer merupakan turunan dari facility
 class Mixer extends Facility{
     public Mixer(){}
