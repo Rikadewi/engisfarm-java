@@ -7,8 +7,7 @@ import model.product.sideproduct.beefomellete.BeefOmellete;
 import model.product.sideproduct.plachicksoup.PlachickSoup;
 import model.product.sideproduct.platycowpancake.PlatycowPancake;
 import model.farmanimal.FarmAnimal;
-//TODO:
-//import model.list.*;
+import model.list.List;
 
 public class Player {
     private static final int DEFWATER = 10;
@@ -24,6 +23,7 @@ public class Player {
     public Player(){
         water = DEFWATER;
         money = DEFMONEY;
+        inventory = new List<Product>();
     }
 
     //menerima input Farm Animal
@@ -45,7 +45,7 @@ public class Player {
     //mixer jenis 1 (chcken egg, cow meat) = beef omellete
     //mixer jenis 2 (platypus egg, cow milk) = platypus pancake
     //mixer jenis 3 (platypus milk, chicken meat) = plachick soup
-    public void interactMixer(){
+    public void interactMixer() throws EngiException {
         boolean hasMix = false;
 
         //mixer jenis 1 (chcken egg, cow meat) = beef omellete

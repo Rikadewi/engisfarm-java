@@ -19,7 +19,10 @@ import model.farmanimal.cow.Cow;
 import model.farmanimal.goldenplatypus.GoldenPlatypus;
 import model.farmanimal.platypus.Platypus;
 import model.player.Player;
-import model.product.*;
+import model.product.Product;
+import model.list.List;
+
+import java.util.Random;
 
 public class GameEngine{
 
@@ -115,8 +118,8 @@ public class GameEngine{
     }
 
     // TUNGGU IMPLEMENTASI JAVA LIST
-    public List<int> lookAround(int x, int y){
-        List<int> around;
+    public List<Integer> lookAround(int x, int y) throws EngiException {
+        List<Integer> around = new List<Integer>();
         //lihat objek utara (x-1)(y)
         around.add(look(x-1,y));
         //lihat objek timur (x)(y+1)
@@ -132,11 +135,11 @@ public class GameEngine{
     public void handleInteract() throws EngiException {
         //Mendapatkan list yang berisi objek disekitarnya
         // cout << "pass1\n";
-        List<int> around = lookAround(XPlayer,YPlayer);
+        List<Integer> around = lookAround(XPlayer,YPlayer);
         boolean foundAnimal= false;
         boolean foundFacility = false;
         int i=0;
-        int pos;
+        int pos = -1;
         int x = XPlayer;
         int y = YPlayer;
         // cout << "pass2\n";
@@ -153,7 +156,6 @@ public class GameEngine{
         }
 
         if (foundAnimal){
-            // cout << "Pass3" << endl;
 
             if (i==0){//interact animal utara
                 FarmAnimal temp = world[XPlayer-1][YPlayer].getAnimal();
@@ -171,22 +173,14 @@ public class GameEngine{
                 getEngi().interact(temp);
             }
 
-            // farmanimal* temp = world[XPlayer-1][YPlayer]->getAnimal();
-            // getEngi()->interact(temp);
-            // cout << temp->getId() << endl;
-            // cout << "Pass4" << endl;
-
         }
 
         if(foundFacility){
-            // cout<< "pass 3" <<endl;
-            int id = around.getElmt(i);
             if(around.getElmt(i)==19){//well
                 getEngi().interactWell();
             }else if (around.getElmt(i)==20){//mixer
                 getEngi().interactMixer();
             }else if (around.getElmt(i)==21){//truck
-                // cout<< "pass 4" <<endl;
 
                 if(pos == 0) x = XPlayer -1;
                 if(pos == 1) y = YPlayer +1;
@@ -195,15 +189,15 @@ public class GameEngine{
                 try{
                     world[x][y].interactCell();
                     getEngi().interactTruck();
-                }catch(String s){
-                    throw s;
+                }catch(EngiException e){
+                    throw e;
                 }
 
             }
         }
     }
 
-    boolean moveAnimal(FarmAnimal f, List<int> around, int i){
+    boolean moveAnimal(FarmAnimal f, List<Integer> around, int i){
         boolean found = false;
         //penghasil telur move bisa ke coop 15 16
         if(f.isEgg()){
@@ -227,14 +221,16 @@ public class GameEngine{
     }
 
     public void handleMoveAnimal(int x, int y) throws EngiException {
-        List <int> around = lookAround(x,y);
+        List <Integer> around = lookAround(x,y);
         FarmAnimal f = world[x][y].getAnimal();
         if(f!=null){
             if(!f.getMoved()){
                 boolean found = false;
                 int i = 0;
                 while (!found && i<4){
-                    int n = rand()%4;
+                    Random rand = new Random();
+                    int n = rand.nextInt(100);
+                    n = n%4;
                     if (n==0 && moveAnimal(f,around,0)){//utara (x-1)(y)
                         world[x][y].setAnimal(null);
                         world[x-1][y].setAnimal(f);
@@ -267,7 +263,7 @@ public class GameEngine{
 
     //BELOM IMPLEMENTASI
     public void handleMove(int n) throws EngiException {
-        List<int> around = lookAround(XPlayer, YPlayer);
+        List<Integer> around = lookAround(XPlayer, YPlayer);
         boolean found = false;
         int i = 0;
         Player P = getEngi();
@@ -278,7 +274,8 @@ public class GameEngine{
                 world[XPlayer][YPlayer].setPlayer(P);
             }
             else{
-                throw "Tidak dapat melakukan move";
+                EngiException e = new EngiException("Tidak dapat melakukan move");
+                throw e;
             }
         } else if (n==2){//kanan
             if((around.getElmt(1))>=13 && (around.getElmt(1))<=18){
@@ -287,7 +284,8 @@ public class GameEngine{
                 world[XPlayer][YPlayer].setPlayer(P);
             }
             else{
-                throw "Tidak dapat melakukan move";
+                EngiException e = new EngiException("Tidak dapat melakukan move");
+                throw e;
             }
         } else if (n==3){//bawah
             if((around.getElmt(2))>=13 && (around.getElmt(2))<=18){
@@ -296,7 +294,8 @@ public class GameEngine{
                 world[XPlayer][YPlayer].setPlayer(P);
             }
             else{
-                throw "Tidak dapat melakukan move";
+                EngiException e = new EngiException("Tidak dapat melakukan move");
+                throw e;
             }
         } else if (n==4){//kiri
             if((around.getElmt(3))>=13 && (around.getElmt(3))<=18){
@@ -316,7 +315,7 @@ public class GameEngine{
     }
 
     public String handleTalk() throws EngiException {
-        List<int> around = lookAround(XPlayer, YPlayer);
+        List<Integer> around = lookAround(XPlayer, YPlayer);
         String s;
         if(around.getElmt(0)>=1 && around.getElmt(0)<=12){
             FarmAnimal temp = world[XPlayer-1][YPlayer].getAnimal();
@@ -342,7 +341,7 @@ public class GameEngine{
     }
 
     public void handleKill() throws EngiException {
-        List<int> around = lookAround(XPlayer, YPlayer);
+        List<Integer> around = lookAround(XPlayer, YPlayer);
         boolean hasKill = false;
         int i = 0;
         while (!hasKill && i<4){
