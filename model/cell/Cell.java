@@ -1,13 +1,13 @@
 //File : cell.java
-// #include "../../FarmAnimal/Header/farmanimal.h"
+// #include "../../farmanimal/Header/farmanimal.h"
 // #include "../../Player/Header/player.h"
 
 // CellType  = land, facility
 // UpdateType = makan, grow, readyTruck, removeAnimal, checkAnimal, canMove
 package model.cell;
+import model.player.Player;
 //TODO:
-//import model.player.Player;
-//import model.farmanimal.FarmAnimal;
+//import model.farmanimal.;
 
 import model.EngiException;
 

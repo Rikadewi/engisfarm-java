@@ -8,7 +8,7 @@ package model.cell.facility;
 
 import model.cell.Cell;
 //TODO:
-//import model.farmanimal.FarmAnimal;
+//import model.farmanimal.farmanimal;
 
 //facility merupakan turunan dari cell
 public abstract class Facility extends Cell{

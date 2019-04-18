@@ -1,14 +1,14 @@
 //File : land.h
 
 // #include "cell.h"
-// #include "../../FarmAnimal/Header/farmanimal.h"
+// #include "../../farmanimal/Header/farmanimal.h"
 
 // LandType = barn, coop, grassLand
 
 package model.cell.land;
 import model.cell.Cell;
 //TODO:
-//import model.farmanimal.FarmAnimal;
+//import model.farmanimal.farmanimal;
 //import model.player.Player;
 
 //implementasi kurangin farm animal
@@ -100,7 +100,7 @@ public class Land extends Cell {
     
         if (updateType == "removeAnimal"){
             FarmAnimal F = getAnimal();
-            // FarmAnimal.Minjumlah()
+            // farmanimal.Minjumlah()
             setAnimal(null);
             return;
         }

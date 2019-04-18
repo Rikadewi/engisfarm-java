@@ -4,9 +4,8 @@
 //#include <cstdlib>
 //using namespace std;
 package controller.gameengine;
-import model.cell.*;
-import model.FarmAnimal.*;
-import model.List.*;
+import model.cell.Cell;
+import model.farmanimal.FarmAnimal;
 import model.Player.*;
 import model.Product.*;
 
@@ -156,7 +155,7 @@ class GameEngine{
                 getEngi().interact(temp);
             }
 
-            // FarmAnimal* temp = world[XPlayer-1][YPlayer]->getAnimal();
+            // farmanimal* temp = world[XPlayer-1][YPlayer]->getAnimal();
             // getEngi()->interact(temp);
             // cout << temp->getId() << endl;
             // cout << "Pass4" << endl;

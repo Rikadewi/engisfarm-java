@@ -1,3 +1,4 @@
+
 abstract class FarmAnimal{
     public final int default_living_time = 5;
     public final int default_hungry_time = 5;
@@ -29,7 +30,7 @@ abstract class FarmAnimal{
         }
     }
 
-    public void setHungry(bool hungry){
+    public void setHungry(boolean hungry){
         this.hungry = hungry;
     }
     //fungsi boolean isHungry mengembalikan true jika atribut hungry bernilai true
