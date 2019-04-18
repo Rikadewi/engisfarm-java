@@ -18,7 +18,6 @@ public class ChickenKampung extends FarmAnimal {
 	public FarmProduct getProduct(boolean isKill) throws EngiException {
         if (isKill){
             ChickenMeat meat = new ChickenMeat();
-            jumlah--;
             return meat;
         }
         else{

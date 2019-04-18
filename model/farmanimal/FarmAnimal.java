@@ -79,7 +79,6 @@ public abstract class FarmAnimal{
         return meat;
     }
     public abstract FarmProduct getProduct(boolean bool) throws EngiException;
-    public static int getJumlah(){
-        return jumlah;
-    }
+    public static int getJumlah(){ return jumlah; }
+    public static void MinJumlah(){ jumlah--; }
 }

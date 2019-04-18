@@ -106,7 +106,7 @@ public class Land extends Cell {
     
         if (updateType == "removeAnimal"){
             FarmAnimal F = getAnimal();
-            // farmanimal.Minjumlah()
+            FarmAnimal.MinJumlah();
             setAnimal(null);
             return;
         }

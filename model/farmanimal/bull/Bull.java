@@ -17,7 +17,6 @@ public class Bull extends FarmAnimal{
 	public FarmProduct getProduct(boolean isKill) throws EngiException {
         if (isKill){
             CowMeat meat = new CowMeat();
-            jumlah--;
             return meat;
         }
         else{
