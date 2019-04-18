@@ -6,9 +6,9 @@
 
 package model.cell.facility;
 
+import model.EngiException;
 import model.cell.Cell;
-//TODO:
-//import model.farmanimal.farmanimal;
+import model.farmanimal.FarmAnimal;
 
 //facility merupakan turunan dari cell
 public abstract class Facility extends Cell{
@@ -17,7 +17,8 @@ public abstract class Facility extends Cell{
         return null;
     }
     //throw
-    public void setAnimal(FarmAnimal f){
-        throw "Can't set facility";
+    public void setAnimal(FarmAnimal f) throws EngiException {
+        EngiException e = new EngiException("Can't set facility");
+        throw e;
     }
 }

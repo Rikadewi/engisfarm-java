@@ -3,13 +3,25 @@
 //#include <ostream>
 //#include <cstdlib>
 //using namespace std;
-package controller.gameengine;
-import model.cell.Cell;
-import model.farmanimal.FarmAnimal;
-import model.Player.*;
-import model.Product.*;
+package controller;
 
-class GameEngine{
+import model.EngiException;
+import model.cell.Cell;
+import model.cell.facility.mixer.Mixer;
+import model.cell.facility.truck.Truck;
+import model.cell.facility.well.Well;
+import model.cell.land.Land;
+import model.farmanimal.*;
+import model.farmanimal.bull.Bull;
+import model.farmanimal.chickenjago.ChickenJago;
+import model.farmanimal.chickenkampung.ChickenKampung;
+import model.farmanimal.cow.Cow;
+import model.farmanimal.goldenplatypus.GoldenPlatypus;
+import model.farmanimal.platypus.Platypus;
+import model.player.Player;
+import model.product.*;
+
+public class GameEngine{
 
     public static final int WORLDSIZE = 13;
     private Cell[][] world;
@@ -33,7 +45,7 @@ class GameEngine{
         return world[XPlayer][YPlayer].getPlayer();
     }
 
-    public GameEngine(){
+    public GameEngine() throws EngiException {
         tick = 0;
         XPlayer = 6;
         YPlayer = 6;
@@ -44,7 +56,7 @@ class GameEngine{
         for(int i=0;i<WORLDSIZE;i++){
             for(int j=0; j<WORLDSIZE; j++){
                 {
-                    world[i][j] = new Land(true,null,grassLand);
+                    world[i][j] = new Land(true,null,"grassLand");
                 }
             }
         }
@@ -55,13 +67,13 @@ class GameEngine{
         //Menetapkan Coop
         for(int i=0; i<6; i++){
             for(int j=0; j<6; j++){
-                world[i][j]= new Land(true,null,coop);
+                world[i][j]= new Land(true,null,"coop");
             }
         }
 
         for(int i=0; i<6; i++){
             for(int j=6; j<13; j++){
-                world[i][j] = new Land(true,null,barn);
+                world[i][j] = new Land(true,null, "barn");
             }
         }
 
@@ -71,22 +83,26 @@ class GameEngine{
         world[10][12]=  new Truck();
 
         //Menetapkan Animal di coop
-        world[0][0].setAnimal(new ChickenKampung());
-        world[1][1].setAnimal(new ChickenKampung());
-        world[2][2].setAnimal(new Platypus());
-        world[3][3].setAnimal(new Platypus());
+        try {
+            world[0][0].setAnimal(new ChickenKampung());
+            world[1][1].setAnimal(new ChickenKampung());
+            world[2][2].setAnimal(new Platypus());
+            world[3][3].setAnimal(new Platypus());
 
-        //Menetapkan Animal di barn
-        world[0][6].setAnimal(new ChickenJago());
-        world[0][7].setAnimal(new ChickenJago());
-        world[2][8].setAnimal(new Bull());
-        world[2][9].setAnimal(new Bull());
+            //Menetapkan Animal di barn
+            world[0][6].setAnimal(new ChickenJago());
+            world[0][7].setAnimal(new ChickenJago());
+            world[2][8].setAnimal(new Bull());
+            world[2][9].setAnimal(new Bull());
 
-        //Menetapkan ANimal di Grassland
-        world[8][3].setAnimal(new Cow());
-        world[9][2].setAnimal(new Cow());
-        world[10][2].setAnimal(new GoldenPlatypus());
-        world[11][1].setAnimal(new GoldenPlatypus());
+            //Menetapkan ANimal di Grassland
+            world[8][3].setAnimal(new Cow());
+            world[9][2].setAnimal(new Cow());
+            world[10][2].setAnimal(new GoldenPlatypus());
+            world[11][1].setAnimal(new GoldenPlatypus());
+        }catch (EngiException e){
+            throw e;
+        }
     }
 
     public int look(int i, int j){
@@ -113,7 +129,7 @@ class GameEngine{
     }
 
     // TUNGGU IMPLEMENTASI JAVA LIST
-    public void handleInteract(){
+    public void handleInteract() throws EngiException {
         //Mendapatkan list yang berisi objek disekitarnya
         // cout << "pass1\n";
         List<int> around = lookAround(XPlayer,YPlayer);
@@ -210,7 +226,7 @@ class GameEngine{
         return found;
     }
 
-    public void handleMoveAnimal(int x, int y){
+    public void handleMoveAnimal(int x, int y) throws EngiException {
         List <int> around = lookAround(x,y);
         FarmAnimal f = world[x][y].getAnimal();
         if(f!=null){
@@ -240,7 +256,8 @@ class GameEngine{
                     }
                 }
                 if (!found){
-                    throw "Ada animal yang stuck!";
+                    EngiException e = new EngiException("Ada animal yang stuck!");
+                    throw e;
                 }else{
                     f.setMoved(true);
                 }
@@ -249,7 +266,7 @@ class GameEngine{
     }
 
     //BELOM IMPLEMENTASI
-    public void handleMove(int n){
+    public void handleMove(int n) throws EngiException {
         List<int> around = lookAround(XPlayer, YPlayer);
         boolean found = false;
         int i = 0;
@@ -288,21 +305,17 @@ class GameEngine{
                 world[XPlayer][YPlayer].setPlayer(P);
             }
             else{
-                throw "Tidak dapat melakukan move";
+                EngiException e = new EngiException("Tidak dapat melakukan move");
+                throw e;
             }
         }
     }
 
-    public void handleGrow(){
-        try{
-            world[getXPlayer()][getYPlayer()].updateCell(grow);
-        }catch(String s){
-            throw "Air tidak cukup";
-        }
-
+    public void handleGrow() throws EngiException {
+        world[getXPlayer()][getYPlayer()].updateCell("grow");
     }
 
-    public String handleTalk(){
+    public String handleTalk() throws EngiException {
         List<int> around = lookAround(XPlayer, YPlayer);
         String s;
         if(around.getElmt(0)>=1 && around.getElmt(0)<=12){
@@ -323,11 +336,12 @@ class GameEngine{
             return s;
         }
         else{
-            throw "sedang ngomong sendiri";
+            EngiException e = new EngiException("sedang ngomong sendiri");
+            throw e;
         }
     }
 
-    public void handleKill(){
+    public void handleKill() throws EngiException {
         List<int> around = lookAround(XPlayer, YPlayer);
         boolean hasKill = false;
         int i = 0;
@@ -342,21 +356,21 @@ class GameEngine{
         if (i==0){//kill animal utara
             FarmAnimal temp = world[XPlayer-1][YPlayer].getAnimal();
             getEngi().kill(temp);
-            world[XPlayer-1][YPlayer].updateCell(removeAnimal);
+            world[XPlayer-1][YPlayer].updateCell("removeAnimal");
 
         }else if (i==1){ //kill animal timur
             FarmAnimal temp = world[XPlayer][YPlayer+1].getAnimal();
             getEngi().kill(temp);
-            world[XPlayer][YPlayer+1].updateCell(removeAnimal);
+            world[XPlayer][YPlayer+1].updateCell("removeAnimal");
         }else if (i==2){ //kill animal selatan
             FarmAnimal temp = world[XPlayer+1][YPlayer].getAnimal();
             getEngi().kill(temp);
-            world[XPlayer+1][YPlayer].updateCell(removeAnimal);
+            world[XPlayer+1][YPlayer].updateCell("removeAnimal");
 
         }else if (i==3){ //kill animal barat
             FarmAnimal temp = world[XPlayer][YPlayer-1].getAnimal();
             getEngi().kill(temp);
-            world[XPlayer][YPlayer-1].updateCell(removeAnimal);
+            world[XPlayer][YPlayer-1].updateCell("removeAnimal");
         }
 
     }
@@ -366,7 +380,7 @@ class GameEngine{
     }
 
     /* FUNGSI UPDATE */
-    public void updateGame(){
+    public void updateGame() throws EngiException {
         tick++;
         //Menggerakan animal
         Animals = 0;
@@ -374,9 +388,9 @@ class GameEngine{
             for(int j =0 ; j<WORLDSIZE; j++){
                 if(getID(i,j) < 13) { //Jika merupakan animal
 
-                    world[i][j].updateCell(checkAnimal);
+                    world[i][j].updateCell("checkAnimal");
                     //Bikin Animal tsb makan
-                    world[i][j].updateCell(makan);
+                    world[i][j].updateCell("makan");
                     //kurangin living time, sekaligus bunuh yang mati
                     if(world[i][j].getAnimal() != null){
                         //Gerakan Animal Tsb
@@ -386,7 +400,7 @@ class GameEngine{
                 }
                 else if (getID(i,j) == 21 ){ //Jika merupakan truck
                     //Ubah keadaan trucknya
-                    world[i][j].updateCell(readyTruck);
+                    world[i][j].updateCell("readyTruck");
                 }
                 //Kasus lain???
             }
@@ -397,7 +411,7 @@ class GameEngine{
             for(int j =0 ; j<WORLDSIZE; j++){
                 if(getID(i,j) < 13) { //Jika merupakan animal
                     //Bikin Animal bisa move
-                    world[i][j].updateCell(canMove);
+                    world[i][j].updateCell("canMove");
                 }
             }
         }

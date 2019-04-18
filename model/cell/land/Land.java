@@ -6,10 +6,11 @@
 // LandType = barn, coop, grassLand
 
 package model.cell.land;
+
+import model.EngiException;
 import model.cell.Cell;
-//TODO:
-//import model.farmanimal.farmanimal;
-//import model.player.Player;
+import model.farmanimal.FarmAnimal;
+import model.player.Player;
 
 //implementasi kurangin farm animal
 public class Land extends Cell {
@@ -56,6 +57,7 @@ public class Land extends Cell {
         else{
             return 22;
         }
+        return -1;
     }
     public boolean isRumput(){
         return true;
@@ -77,11 +79,15 @@ public class Land extends Cell {
     }
     //menerima update untuk grow
     //menerima update untuk makan
-    public void updateCell(String updateType){
+    public void updateCell(String updateType) throws EngiException {
         if(updateType == "grow"){
             setRumput(true);
             Player P = getPlayer();
-            P.grow();
+            try {
+                P.grow();
+            }catch (EngiException e){
+                throw e;
+            }
             return;
         }
         
@@ -111,7 +117,7 @@ public class Land extends Cell {
                 F.updateLivingTime();
                 F.updateHungryTime();
                 if(F.getLivingTime() <= 0){
-                    updateCell(removeAnimal);
+                    updateCell("removeAnimal");
                 }
             }
             return;
@@ -125,11 +131,16 @@ public class Land extends Cell {
             return;
         }
     }
-    public void interactCell(){
+    public void interactCell() throws EngiException {
         FarmAnimal F = getAnimal();
         Player P = getPlayer();
         if(F != null){
-            P.interact(F);
+            try {
+                P.interact(F);
+            }catch (EngiException e){
+                throw e;
+            }
+
         }
     }
 }

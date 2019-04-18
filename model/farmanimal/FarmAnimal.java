@@ -1,5 +1,9 @@
+package model.farmanimal;
 
-abstract class FarmAnimal{
+import model.EngiException;
+import model.product.farmproduct.FarmProduct;
+
+public abstract class FarmAnimal{
     public final int default_living_time = 5;
     public final int default_hungry_time = 5;
     private boolean hungry;
@@ -61,5 +65,21 @@ abstract class FarmAnimal{
     
     public int getLivingTime(){
         return living_time;
+    }
+    public abstract int getId();
+    public abstract String bersuara();
+
+    public boolean isEgg(){
+        return egg;
+    }
+    public boolean isMilk(){
+        return milk;
+    }
+    public boolean isMeat(){
+        return meat;
+    }
+    public abstract FarmProduct getProduct(boolean bool) throws EngiException;
+    public static int getJumlah(){
+        return jumlah;
     }
 }

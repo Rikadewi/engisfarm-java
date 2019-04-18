@@ -3,10 +3,8 @@
 // #include "facility.h"
 
 package model.cell.facility.well;
-
+import model.EngiException;
 import model.cell.facility.Facility;
-//TODO:
-//import model.cell.player.Player;
 
 //Well merupakan turunan dari facility
 public class Well extends Facility{
@@ -18,7 +16,12 @@ public class Well extends Facility{
     public void updateCell(String updateType){
         //do nothing
     }
-    public void interactCell(){
-        engi.interactWell();
+    public void interactCell() throws EngiException {
+        try {
+            engi.interactWell();
+        }
+        catch (EngiException e){
+            throw e;
+        }
     }
 }

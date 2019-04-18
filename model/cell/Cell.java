@@ -6,8 +6,7 @@
 // UpdateType = makan, grow, readyTruck, removeAnimal, checkAnimal, canMove
 package model.cell;
 import model.player.Player;
-//TODO:
-//import model.farmanimal.;
+import model.farmanimal.FarmAnimal;
 
 import model.EngiException;
 
@@ -36,7 +35,7 @@ public abstract class Cell{
     public String getType(){
         return cellType;
     }
-    public abstract void updateCell(String updateType);
+    public abstract void updateCell(String updateType) throws EngiException;
     public void setType(String cellType){
         this.cellType = cellType;
     }
@@ -50,5 +49,5 @@ public abstract class Cell{
     public abstract void interactCell() throws EngiException;
 
     //throw "Can't set facility" jika type cell facility
-    public abstract void setAnimal(FarmAnimal f);
+    public abstract void setAnimal(FarmAnimal f) throws EngiException;
 }

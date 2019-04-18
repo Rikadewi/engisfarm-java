@@ -6,9 +6,9 @@ import model.product.sideproduct.SideProduct;
 import model.product.sideproduct.beefomellete.BeefOmellete;
 import model.product.sideproduct.plachicksoup.PlachickSoup;
 import model.product.sideproduct.platycowpancake.PlatycowPancake;
-
-//import farmanimal
-//import list
+import model.farmanimal.FarmAnimal;
+//TODO:
+//import model.list.*;
 
 public class Player {
     private static final int DEFWATER = 10;
