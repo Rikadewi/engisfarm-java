@@ -1,123 +1,101 @@
 package model.list;
+import model.EngiException;
 
 public class List<Type> {
     
     private Type []data;
     private int size;
     private int Neff;
-    private final int IdxMin =0;
-    private final int MAXSIZE =256;
-    
-    public List<Type>(){
+    private static final int IdxMin =0;
+    private static final int MAXSIZE =256;
+
+    public List(){
         size = MAXSIZE;
         Neff = 0;
         data = new Type[size];
     } 
 
-        // Ctor dengan parameter
-        List(int _size){
-            size = _size;
-            Neff = 0;
-            data = new Type[size];
-        }
-        // Cctor
-        List(const List<Type>& L){
-            size = L.size;
-            Neff = L.Neff;
-            data = new Type[size];
-            for (int i=0; i<size; i++){
-                data[i] = L.data[i];
-            }
-        }
-        
-        List& operator= (const List<Type>& L){
-            delete[] data;
-            size = L.size;
-            Neff = L.Neff;
-            data = new Type[size];
-            for (int i=0; i<size; i++){
-                data[i] = L.data[i];
-            }
-            return *this;
-        }
+    public List(int _size){
+        size = _size;
+        Neff = 0;
+        data = new Type[size];
+    }
 
         //Services
+    public boolean isEmpty() {
+        return (Neff == 0);
+    }
+    public boolean isFull() {
+        return (Neff == size);
+    }
 
-        bool isEmpty() const{
-            return (Neff == 0);
-        }
-        bool isFull() const{
-            return (Neff == size);
-        }
-        void add(Type X){
-            try
-            {    
-                if(size > Neff){
-                    data[Neff] = X;
-                    Neff++;
-                }
-                else {
-                    throw X;
-                }
+    public void add(Type X) throws EngiException {
+        try
+        {    
+            if(size > Neff){
+                data[Neff] = X;
+                Neff++;
             }
-            catch(Type e)
-            {
-                cout << "List penuh, tidak dapat menambahkan objek baru" << endl;
+            else {
+                throw new EngiException("List penuh, tidak dapat menambahkan objek baru") ;
             }
         }
-
-        void remove(Type elmt){
-            removeAt(find(elmt));
-        }        
-
-        void removeAt(int idx){
-            //MENGGESER SETIAP ELEMENT
-            for(int i=idx; i<getLastIdx(); i++){
-                data[i] = data[i+1];
-            }
-            Neff--;
+        catch(EngiException e)
+        {
+            System.out.pritnln(e.getMessage());
         }
+    }
+
+    public void remove(Type elmt){
+        removeAt(find(elmt));
+    }        
+
+    public void removeAt(int idx){
+        //MENGGESER SETIAP ELEMENT
+        for(int i=idx; i<getLastIdx(); i++){
+            data[i] = data[i+1];
+        }
+        Neff--;
+    }
 
 
-        //jika tidak ditermukan kembalikan -1
-        int find(Type elmt){
-            bool found = false;
-            int i=0;
-            while(!found && i<Neff){
-                if(data[i] == elmt){
-                    found = true;
-                }
-                else {
-                    i++;
-                }
+    //jika tidak ditermukan kembalikan -1
+    public int find(Type elmt){
+        boolean found = false;
+        int i=0;
+        while(!found && i<Neff){
+            if(data[i] == elmt){
+                found = true;
             }
-            if (found){
-                return i;
-            }
-            else{
-                return -1;
-                cout << "Tidak Ditemukan Objek" << endl;
+            else {
+                i++;
             }
         }
-        
-        Type getElmt(int i){
-            return data[i];
+        if (found){
+            return i;
         }
-        int getSize(){
-            return size;
+        else{
+            return -1;
+            System.out.println("Tidak Ditemukan Objek");
         }
-        int getNeff(){
-            return Neff;
-        }
-        int getFirstIdx(){
-            return IdxMin;
-        }
-        int getLastIdx() {
-            if(Neff > 0)
-                return Neff-1;
-            else
-                return 0;
-        }
-};
-
-#endif
+    }
+    
+    public Type getElmt(int i){
+        return data[i];
+    }
+    public int getSize(){
+        return size;
+    }
+    public int getNeff(){
+        return Neff;
+    }
+    public int getFirstIdx(){
+        return IdxMin;
+    }
+    public int getLastIdx() {
+        if(Neff > 0)
+            return Neff-1;
+        else
+            return 0;
+    }
+}
