@@ -23,7 +23,7 @@ public class Player {
     public Player(){
         water = DEFWATER;
         money = DEFMONEY;
-        inventory = new List<Product>();
+        inventory = new List(MAXBAG);
     }
 
     //menerima input Farm Animal

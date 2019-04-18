@@ -1,5 +1,8 @@
 package model.list;
+
 import model.EngiException;
+
+//import java.lang.reflect.Array;
 
 public class List<Type> {
     
@@ -9,16 +12,32 @@ public class List<Type> {
     private static final int IdxMin =0;
     private static final int MAXSIZE =256;
 
+//    public List(){
+//        size = MAXSIZE;
+//        Neff = 0;
+////        @SuppressWarnings("unchecked"
+//        data =  (Type[]) new Object[MAXSIZE];
+////        final Type[] data = (Type[]) Array.newInstance(c,size);
+////        this.data = data;
+//    }
+
+//    public List(Class<Type> c, int _size){
+//        size = _size;
+//        Neff = 0;
+//        @SuppressWarnings("unchecked")
+//        final Type[] data = (Type[]) Array.newInstance(c,size);
+//        this.data = data;
+//    }
     public List(){
         size = MAXSIZE;
-        Neff = 0;
-        data = new Type[size];
-    } 
+        Neff =0;
+        data = (Type[]) new Object[size];
+    }
 
     public List(int _size){
         size = _size;
-        Neff = 0;
-        data = new Type[size];
+        Neff =0;
+        data = (Type[]) new Object[size];
     }
 
         //Services
@@ -42,11 +61,11 @@ public class List<Type> {
         }
         catch(EngiException e)
         {
-            System.out.pritnln(e.getMessage());
+            throw e;
         }
     }
 
-    public void remove(Type elmt){
+    public void remove(Type elmt) throws EngiException {
         removeAt(find(elmt));
     }        
 
@@ -60,7 +79,7 @@ public class List<Type> {
 
 
     //jika tidak ditermukan kembalikan -1
-    public int find(Type elmt){
+    public int find(Type elmt) throws EngiException{
         boolean found = false;
         int i=0;
         while(!found && i<Neff){
@@ -75,8 +94,7 @@ public class List<Type> {
             return i;
         }
         else{
-            return -1;
-            System.out.println("Tidak Ditemukan Objek");
+            throw new EngiException("Tidak Ditemukan Objek");
         }
     }
     
