@@ -1,0 +1,11 @@
+JUnit version 4.12
+.getProduct test
+.getID test
+.Cow Test
+ismilk, isegg, ishungry, ismeat test
+.Bersuara test
+
+Time: 0.004
+
+OK (4 tests)
+

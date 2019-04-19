@@ -13,7 +13,7 @@ public class ChickenKampung extends FarmAnimal {
         super.meat = true;
     }
 	public String bersuara(){
-        return "kukuruyuuuuuk";
+        return "pok pok petoook";
     }
 	public FarmProduct getProduct(boolean isKill) throws EngiException {
         if (isKill){
