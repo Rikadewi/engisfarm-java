@@ -26,7 +26,7 @@ import java.util.Random;
 
 public class GameEngine{
 
-    public static final int WORLDSIZE = 13;
+    public static final int WORLDSIZE = 10;
     private Cell[][] world;
     private int tick;
     private int XPlayer;
@@ -50,9 +50,9 @@ public class GameEngine{
 
     public GameEngine() throws EngiException {
         tick = 0;
-        XPlayer = 6;
-        YPlayer = 6;
-        Animals = 12;
+        XPlayer = 5;
+        YPlayer = 5;
+        Animals = 10;
         world = new Cell[WORLDSIZE][WORLDSIZE];
 
         //Inisialisasi dunia dan set semua petak menjadi graassland berumput
@@ -68,22 +68,22 @@ public class GameEngine{
         world[XPlayer][YPlayer].setPlayer(new Player());
 
         //Menetapkan Coop
-        for(int i=0; i<6; i++){
-            for(int j=0; j<6; j++){
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5; j++){
                 world[i][j]= new Land(true,null,"coop");
             }
         }
 
-        for(int i=0; i<6; i++){
-            for(int j=6; j<13; j++){
+        for(int i=0; i<5; i++){
+            for(int j=5; j<10; j++){
                 world[i][j] = new Land(true,null, "barn");
             }
         }
 
         //Menetapkan Facility
-        world[8][12] = new Mixer();
-        world[9][12] = new Well();
-        world[10][12]=  new Truck();
+        world[7][9] = new Mixer();
+        world[8][9] = new Well();
+        world[9][9]=  new Truck();
 
         //Menetapkan Animal di coop
         try {
@@ -100,9 +100,9 @@ public class GameEngine{
 
             //Menetapkan ANimal di Grassland
             world[8][3].setAnimal(new Cow());
-            world[9][2].setAnimal(new Cow());
-            world[10][2].setAnimal(new GoldenPlatypus());
-            world[11][1].setAnimal(new GoldenPlatypus());
+            
+            world[9][2].setAnimal(new GoldenPlatypus());
+            
         }catch (EngiException e){
             throw e;
         }
