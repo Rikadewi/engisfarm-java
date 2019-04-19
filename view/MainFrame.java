@@ -29,7 +29,9 @@ public class MainFrame extends JFrame implements ActionListener {
     private static JPanel TopPanel;
     private static JPanel BotPanel;
     private static JPanel Map;
-
+    private JLabel Animals;
+    private JLabel Name;
+    private JLabel Ticker;
 
     public MainFrame() {
         setTitle("Rikas Farm Game");
@@ -53,6 +55,17 @@ public class MainFrame extends JFrame implements ActionListener {
         TopPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 
+
+        Animals = new JLabel("Animals : " );
+        Animals.setFont(new Font("Dialog", Font.BOLD, 18));
+        Animals.setBounds(800, 3, 200, 50);
+        TopPanel.add(Animals);
+
+        Ticker = new JLabel("Tick: ");
+        Ticker.setFont(new Font("Dialog", Font.BOLD, 18));
+        Ticker.setBounds(400, 3, 100, 50);
+        TopPanel.add(Ticker);
+
         //Bot Panel
         BotPanel = new JPanel(new GridLayout(3,3));
         BotPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -70,7 +83,7 @@ public class MainFrame extends JFrame implements ActionListener {
         /*Create Map Instance */
         Map = new JPanel();
         renderStart(); //Default map
-     
+
         Map.setLayout(new GridLayout(10,10));
         Map.setBackground(Color.green);
         Map.setVisible(true);
@@ -88,19 +101,42 @@ public class MainFrame extends JFrame implements ActionListener {
         MidPanel.add(Map, BorderLayout.CENTER);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    
+
+//    public boolean getRunning () {
+//        return isRunning;
+//    }
+//
+//    public void setRunning(boolean running) {
+//        isRunning = running;
+//    }
+
     public void renderName(String S){
-        JLabel Name = new JLabel("Name : " + S);
+        Name = new JLabel("Name : " + S);
         Name.setFont(new Font("Dialog", Font.BOLD, 18));
         Name.setBounds(20, 3, 200, 50);
         TopPanel.add(Name);
     }
 
+    public void renderTick(int N){
+        TopPanel.remove(Ticker);
+        TopPanel.revalidate();
+        TopPanel.repaint();
+        Ticker = new JLabel("Tick : " + N);
+        Ticker.setFont(new Font("Dialog", Font.BOLD, 18));
+        Ticker.setBounds(470, 3, 300, 50);
+        TopPanel.add(Ticker);
+
+    }
+
     public void renderAnimalCount(int N){
-        JLabel Animals = new JLabel("Animals : " + Integer.toString(N));
+        TopPanel.remove(Animals);
+        TopPanel.revalidate();
+        TopPanel.repaint();
+        Animals = new JLabel("Animals : " + Integer.toString(N));
         Animals.setFont(new Font("Dialog", Font.BOLD, 18));
-        Animals.setBounds(800, 3, 100, 50);
+        Animals.setBounds(800, 3, 200, 50);
         TopPanel.add(Animals);
+
     }
 
     public void renderInventory(String[] List){
@@ -146,25 +182,25 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     //To DO Add parameter matrix of Int and make cases (1-12 animal, 19-21 facility, 13-18 Land, 20 mixer, 21 truck 22 player)
-    public void render(){
-        for (int row = 0; row < grid.length; row++) {
-            for (int col = 0; col < grid[row].length; col++) {
-                if(row<5 && col<5){
-                    grid[row][col] = new JLabel("       C");
-                }
-                else if (row<5){
-                    grid[row][col] = new JLabel("       B");
-                }
-                else{
-                    grid[row][col] = new JLabel("       G");
-                }
-                // grid[row][col].setIcon(getIcon(X));
-                grid[row][col].setOpaque(false);
-                grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                Map.add(grid[row][col]);
-            }
-        }   
-    }
+//    public void render(){
+//        for (int row = 0; row < grid.length; row++) {
+//            for (int col = 0; col < grid[row].length; col++) {
+//                if(row<5 && col<5){
+//                    grid[row][col] = new JLabel("       C");
+//                }
+//                else if (row<5){
+//                    grid[row][col] = new JLabel("       B");
+//                }
+//                else{
+//                    grid[row][col] = new JLabel("       G");
+//                }
+//                // grid[row][col].setIcon(getIcon(X));
+//                grid[row][col].setOpaque(false);
+//                grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//                Map.add(grid[row][col]);
+//            }
+//        }
+//    }
 
     public void renderStart(){
         for (int row = 0; row < grid.length; row++) {
@@ -186,6 +222,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }   
     }
 
+
     private Color getGrassColor (int X) {
        if (X%2 != 0) {
            return Color.YELLOW;
@@ -197,14 +234,10 @@ public class MainFrame extends JFrame implements ActionListener {
     
 
 
-    public static void main(String[] args) throws IOException {
-        
-        MainFrame f = new MainFrame(); //Initialize Main Frame
-        f.setVisible(true);
+//
+//
 
-
-
-    }
+//
         @Override
         public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
