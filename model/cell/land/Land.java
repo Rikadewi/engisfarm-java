@@ -28,7 +28,7 @@ public class Land extends Cell {
     public int render(){
         if(getPlayer() == null){
             if(getAnimal() == null){
-                if(landType == "barn"){
+                if(landType.equals("barn")){
                     if(isRumput()){
                         return 14;
                     }else{
@@ -36,14 +36,14 @@ public class Land extends Cell {
                     }
                 }
     
-                if(landType == "coop"){
+                if(landType.equals("coop")){
                     if(isRumput()){
                         return 16;
                     }else{
                         return 15;
                     }
                 }
-                if(landType == "grassLand"){
+                if(landType.equals("grassLand")){
                     if(isRumput()){
                         return 18;
                     }else{
@@ -80,7 +80,11 @@ public class Land extends Cell {
     //menerima update untuk grow
     //menerima update untuk makan
     public void updateCell(String updateType) throws EngiException {
-        if(updateType == "grow"){
+        setRumput(false);
+        System.out.println("msk update cells");
+        System.out.println(updateType);
+        System.out.println("tes");
+        if(updateType.equals("grow")){
             setRumput(true);
             Player P = getPlayer();
             try {
@@ -91,27 +95,29 @@ public class Land extends Cell {
             return;
         }
         
-        if(updateType == "makan"){
+        if(updateType.equals("makan")){
+            System.out.println("msk update cell makan");
             FarmAnimal F = getAnimal();
             if(F != null){
                 if(isRumput()){
                     if (F.isHungry()){
                         F.makan();
                         setRumput(false);
+                        System.out.println("selesai makan");
                     }
                 }
             }
             return;
         }
     
-        if (updateType == "removeAnimal"){
+        if (updateType.equals("removeAnimal")){
             FarmAnimal F = getAnimal();
             FarmAnimal.MinJumlah();
             setAnimal(null);
             return;
         }
         
-        if (updateType == "checkAnimal"){
+        if (updateType.equals("checkAnimal")){
             FarmAnimal F = getAnimal();
             if(F != null){
                 F.updateLivingTime();
@@ -123,7 +129,7 @@ public class Land extends Cell {
             return;
         }
     
-        if (updateType == "canMove"){
+        if (updateType.equals("canMove")){
             FarmAnimal F = getAnimal();
             if(F != null){
                 F.setMoved(false);

@@ -63,7 +63,7 @@ public class GameEngine {
         for (int i = 0; i < WORLDSIZE; i++) {
             for (int j = 0; j < WORLDSIZE; j++) {
                 {
-                    world[i][j] = new Land(true, null, "grassLand");
+                    world[i][j] = new Land(false, null, "grassLand");
                 }
             }
         }
@@ -74,13 +74,13 @@ public class GameEngine {
         //Menetapkan Coop
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                world[i][j] = new Land(true, null, "coop");
+                world[i][j] = new Land(false, null, "coop");
             }
         }
 
         for (int i = 0; i < 5; i++) {
             for (int j = 5; j < 10; j++) {
-                world[i][j] = new Land(true, null, "barn");
+                world[i][j] = new Land(false, null, "barn");
             }
         }
 
@@ -377,13 +377,14 @@ public class GameEngine {
 
     /* FUNGSI UPDATE */
     public void updateGame() throws EngiException {
+        System.out.println("msk update gamess");
         tick++;
         //Menggerakan animal
         animals = 0;
         for (int i = 0; i < WORLDSIZE; i++) {
             for (int j = 0; j < WORLDSIZE; j++) {
                 if (getID(i, j) < 13) { //Jika merupakan animal
-
+                    System.out.println("msk iterasi");
                     world[i][j].updateCell("checkAnimal");
                     //Bikin Animal tsb makan
                     world[i][j].updateCell("makan");
