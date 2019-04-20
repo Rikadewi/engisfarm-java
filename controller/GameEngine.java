@@ -378,14 +378,13 @@ public class GameEngine {
 
     /* FUNGSI UPDATE */
     public void updateGame() throws EngiException {
-        System.out.println("msk update games");
         tick++;
         //Menggerakan animal
         animals = 0;
         for (int i = 0; i < WORLDSIZE; i++) {
             for (int j = 0; j < WORLDSIZE; j++) {
                 if (getID(i, j) < 13) { //Jika merupakan animal
-                    System.out.println("msk iterasi");
+                    System.out.println("msk iterasi coy");
                     world[i][j].updateCell("checkAnimal");
                     //Bikin Animal tsb makan
                     world[i][j].updateCell("makan");

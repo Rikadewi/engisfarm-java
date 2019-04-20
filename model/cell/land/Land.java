@@ -82,10 +82,8 @@ public class Land extends Cell {
     //menerima update untuk grow
     //menerima update untuk makan
     public void updateCell(String updateType) throws EngiException {
-        setRumput(false);
-        System.out.println("msk update cells");
-        System.out.println(updateType);
-        System.out.println("tes");
+        // setRumput(false);
+        // System.out.println(updateType);
         if(updateType.equals("grow")){
             setRumput(true);
             Player P = getPlayer();

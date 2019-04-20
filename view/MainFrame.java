@@ -324,6 +324,9 @@ public class MainFrame extends JFrame implements ActionListener {
             if(X%2 != 0){
                 grid[row][col].setBackground(Color.RED);
             }
+            else{
+                grid[row][col].setBackground(getGrassColor(X));
+            }
         }
 
         else if (X>=13 && X<=18) {
