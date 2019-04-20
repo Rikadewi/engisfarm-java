@@ -92,7 +92,7 @@ public class Main {
                             G.handleInteract();
                         } else if (listener.getKey() == 'k') {
                             G.handleKill();
-                            GameMessage = new JLabel(playerName + "berusaha Kill");
+                            GameMessage = new JLabel(playerName + " berusaha Kill!");
                         } else if (listener.getKey() == 'g') {
                             G.handleGrow();
                         } else if (listener.getKey() == 'q') {
@@ -149,8 +149,13 @@ public class Main {
         }
         ArrayList<String> inventory = G.getInventoryList();
 
-        for(int i=0; i<inventory.size(); i++){
-            F.renderInventory(inventory.get(i));
+        if(inventory.size()<10){
+            for(int i=0; i<inventory.size(); i++){
+                F.renderInventory(inventory.get(i));
+            }
+        }
+        else {
+            System.out.println("Inventory Penuhh!!");
         }
 
         F.renderMsg(GameMessage);

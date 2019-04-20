@@ -57,9 +57,30 @@ public class MainFrame extends JFrame implements ActionListener {
         renderCondition(10, 5000);      
 
         //Right Panel
-        RightPanel = new JPanel();
+        RightPanel = new JPanel(new GridLayout(10,0));
         RightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JLabel label1 = new JLabel("   Controls : ");
+        JLabel label2 = new JLabel("   W : Move Up ");
+        JLabel label3 = new JLabel("   A : Move Left");
+        JLabel label4 = new JLabel("   S : Move Down");
+        JLabel label5 = new JLabel("   D : Move Right");
+        JLabel label6 = new JLabel("   K : Kill");
+        JLabel label7 = new JLabel("   I : Interact");
+        JLabel label8 = new JLabel("   G : Grow");
+        JLabel label9 = new JLabel("   T : Talk");
+        JLabel label10 = new JLabel("   Q : EXIT");
         
+        RightPanel.add(label1);
+        RightPanel.add(label2);
+        RightPanel.add(label3);
+        RightPanel.add(label4);
+        RightPanel.add(label5);
+        RightPanel.add(label6);
+        RightPanel.add(label7);
+        RightPanel.add(label8);
+        RightPanel.add(label9);
+        RightPanel.add(label10);
+
         //Top Panel
         TopPanel = new JPanel(null);
         TopPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -214,6 +235,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public void clearInventory(){
         InventoryPanel.removeAll();
         InventoryPanel.revalidate();
+        InventoryPanel.repaint();
         JLabel InventoryLabel = new JLabel ("Inventory : ");
         InventoryPanel.add(InventoryLabel);
     }
@@ -323,9 +345,7 @@ public class MainFrame extends JFrame implements ActionListener {
             if(X%2 != 0){
                 grid[row][col].setBackground(Color.RED);
             }
-            else{
-                grid[row][col].setBackground(getGrassColor(X));
-            }
+
         }
 
         else if (X>=13 && X<=18) {
@@ -346,7 +366,10 @@ public class MainFrame extends JFrame implements ActionListener {
         else {
             grid[row][col] = new JLabel(getIcon(X));
             grid[row][col].setIcon(getIcon(X));
-            grid[row][col].setBackground(getGrassColor(X));
+            if(X!=22){
+                grid[row][col].setBackground(getGrassColor(X));
+
+            }
         }
         grid[row][col].setOpaque(true);
         grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));

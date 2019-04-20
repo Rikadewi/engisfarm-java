@@ -369,7 +369,7 @@ public class GameEngine {
             getEngi().kill(temp);
             world[xPlayer][yPlayer - 1].updateCell("removeAnimal");
         } else {
-            throw new EngiException("Kamu tidak boleh membunuh Platypus");
+            throw new EngiException("Kamu tidak boleh membunuh Platypus!");
         }
 
     }
