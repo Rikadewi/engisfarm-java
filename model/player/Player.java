@@ -48,6 +48,11 @@ public class Player {
     public void interactMixer() throws EngiException {
         boolean hasMix = false;
 
+        //jika inventory kosong
+        if (inventory.isEmpty()){
+            throw new EngiException("Inventory kosong");
+        }
+
         //mixer jenis 1 (chcken egg, cow meat) = beef omellete
         boolean found1 = false;
         boolean found2 = false;
