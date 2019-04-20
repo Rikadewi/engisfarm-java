@@ -85,7 +85,6 @@ public class MainFrame extends JFrame implements ActionListener {
         renderStart(); //Default map
 
         Map.setLayout(new GridLayout(10,10));
-        Map.setBackground(Color.green);
         Map.setVisible(true);
         
         /*Add panels to Main Frame*/        
@@ -160,25 +159,108 @@ public class MainFrame extends JFrame implements ActionListener {
         CondPanel.add(MoneyLabel);
         LeftPanel.add(CondPanel);                
     }
-    
+    //0 untuk out of bound
+    //1-12 untuk farm animal (ganjil laper, genap kenyang)
+    //egg and milk producing? ada brpa?
+    //1-2 Chicken Kampung -- egg, meat
+    //3-4 ChickenJago -- Meat
+    //5-6 Cow -- milk, meat
+    //7-8 Golden Platypus -- egg,milk
+    //9-10 Platypus -- egg,milk
+    //11-12 Bull -- Meat
+    //13-18 untuk land (ganjil tdk berumput, genap berumput)
+    //13-14 Barn
+    //15-16 Coop
+    //17-18 GrassLand
+    //19-21 untuk facility
+    //19 untuk well
+    //20 untuk mixer
+    //21 untuk truck
+    //22 untuk player
     private ImageIcon getIcon (int X) {
-        
-        if (X==1){
+
+        ImageIcon imageIcon = new ImageIcon("assets/b.png");
+
+        if (X==1 || X==2){
             /*Code to create image Icon*/
-            ImageIcon imageIcon = new ImageIcon("assets/perry.png"); // load the image to a imageIcon
+            imageIcon = new ImageIcon("assets/chicken.png"); // load the image to a imageIcon
             Image image = imageIcon.getImage(); // transform it 
             Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
             imageIcon = new ImageIcon(newimg);  // transform it back
-            return imageIcon;
         }
-        else {
+        else if(X==3 || X==4){
             /*Code to create image Icon*/
-            ImageIcon imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
+            imageIcon = new ImageIcon("assets/jago.png"); // load the image to a imageIcon
             Image image = imageIcon.getImage(); // transform it 
             Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
             imageIcon = new ImageIcon(newimg);  // transform it back
-            return imageIcon;
+         }
+        else if(X==5 || X==6){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/cow.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+         }
+        else if(X==7 || X==8){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/golden.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
         }
+        else if(X==9 || X==10){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/platypus.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
+        }
+        else if(X==11 || X==12){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/pdip.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
+        }
+        else if(X==19){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
+        }
+        else if(X==20){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
+        }
+        else if(X==21){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
+        }
+        else if(X==22){
+            /*Code to create image Icon*/
+            imageIcon = new ImageIcon("assets/player.png"); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            imageIcon = new ImageIcon(newimg);  // transform it back
+
+        }
+
+        return imageIcon;
+
     }
 
     //To DO Add parameter matrix of Int and make cases (1-12 animal, 19-21 facility, 13-18 Land, 20 mixer, 21 truck 22 player)
@@ -202,6 +284,58 @@ public class MainFrame extends JFrame implements ActionListener {
 //        }
 //    }
 
+    public void clearMap(){
+        Map.removeAll();
+        Map.revalidate();
+        Map.repaint();
+    }
+
+
+    public void renderCell(int X, int row, int col){
+
+        if (X>=1 && X<=12) {
+            grid[row][col] = new JLabel(getIcon(X));
+        }
+        else if (X>=13 && X<=18) {
+            if (X == 13 || X == 14) {
+                grid[row][col] = new JLabel("B");
+            }
+            else if (X==15 || X==16){
+                grid[row][col] = new JLabel("C");
+            }
+            else if (X==17 || X==18) {
+                grid[row][col] = new JLabel("G");
+            }
+
+        }
+        else {
+            grid[row][col] = new JLabel(getIcon(X));
+        }
+//        grid[row][col].setOpaque(false);
+        grid[row][col].setBackground(getGrassColor(X));
+        grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+
+    }
+    //0 untuk out of bound
+    //1-12 untuk farm animal (ganjil laper, genap kenyang)
+    //egg and milk producing? ada brpa?
+    //1-2 Chicken Kampung -- egg, meat
+    //3-4 ChickenJago -- Meat
+    //5-6 Cow -- milk, meat
+    //7-8 Golden Platypus -- egg,milk
+    //9-10 Platypus -- egg,milk
+    //11-12 Bull -- Meat
+    //13-18 untuk land (ganjil tdk berumput, genap berumput)
+    //13-14 Barn
+    //15-16 Coop
+    //17-18 GrassLand
+    //19-21 untuk facility
+    //19 untuk well
+    //20 untuk mixer
+    //21 untuk truck
+    //22 untuk player
+
     public void renderStart(){
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[row].length; col++) {
@@ -215,7 +349,8 @@ public class MainFrame extends JFrame implements ActionListener {
                     grid[row][col] = new JLabel("       G");
                 }
                 // grid[row][col].setIcon(getIcon(X));
-                grid[row][col].setOpaque(false);
+//                grid[row][col].setOpaque(false);
+                grid[row][col].setBackground(Color.GREEN);
                 grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 Map.add(grid[row][col]);
             }

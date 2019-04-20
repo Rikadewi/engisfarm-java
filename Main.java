@@ -1,11 +1,17 @@
+import model.EngiException;
 import view.MainFrame;
 import controller.GameEngine;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import java.util.Scanner;
 
 
 public class Main {
+
+    private static GameEngine G;
+    private static MainFrame F;
+
     public static void main(String[] args) {
         System.out.println("Rika's Farm");
         System.out.println("A Game built with Java using Object Oriented Paradigm" );
@@ -21,41 +27,77 @@ public class Main {
 //        String playerName = sc.next();
 //
 
-        //Initialize Game Engine
-//        GameEngine G = new GameEngine();
-        int count = 0;
+        try {
 
-        //Initialize MainFrame
-        MainFrame F = new MainFrame();
-        F.renderAnimalCount(3);
-        F.renderName(playerName);
+            //Initialize Game Engine
+            G = new GameEngine();
 
-        //Add Listener
-        MKeyListener listener = new MKeyListener();
-        F.addKeyListener(listener);
-        F.setVisible(true);
+            //Initialize MainFrame
+            F = new MainFrame();
+            F.renderAnimalCount(3);
+            F.renderName(playerName);
 
-        TimerThred T1 = new TimerThred(F);
-        T1.start();
-        while(true) {
-            if(listener.getKey()=='w'){
-                count++;
-                F.renderAnimalCount(count);
+            //Add Listener
+            MKeyListener listener = new MKeyListener();
+            F.addKeyListener(listener);
+            F.setVisible(true);
+
+            //Start Tick Thread
+            TickThread T1 = new TickThread(F);
+            T1.start();
+
+            for (int i = 0; i<G.WORLDSIZE; i++){
+                for(int j=0; j<G.WORLDSIZE;j++){
+
+                }
             }
-            listener.setKey('x');
-            try { Thread.sleep(1000); }
-            catch (Exception e) {}
-        }
 
+            while(true) {
+                if(listener.getKey()=='w'){
+                    G.handleMove(1);
+                }
+                else if (listener.getKey()=='a'){
+                    G.handleMove(4);
+                }
+                else if (listener.getKey()=='s'){
+                    G.handleMove(3);
+                }
+                else if (listener.getKey()=='d'){
+                    G.handleMove(2);
+                }
+                else if (listener.getKey()=='t'){
+                    G.handleTalk();
+                }
+                else if (listener.getKey()=='i'){
+                    G.handleInteract();
+                }
+                else if (listener.getKey()=='k'){
+                    G.handleKill();
+                }
+                else if (listener.getKey()=='q'){
+                    F.dispose();
+                    System.exit(0);
+                }
+
+                listener.setKey('x');
+                try { Thread.sleep(500); }
+                catch (Exception e) {}
+            }
+        } catch (EngiException E){}
     }
+
+    public void updateMap(){
+        //PR BANYAK
+    }
+
 }
 
-class TimerThred extends Thread {
+class TickThread extends Thread {
 
     private MainFrame F;
     private int count;
 
-    public TimerThred (MainFrame frame){
+    public TickThread(MainFrame frame){
         F = frame;
         count = 0;
     }
@@ -71,6 +113,7 @@ class TimerThred extends Thread {
 
 }
 
+
 class MKeyListener extends KeyAdapter {
 
     private char key;
@@ -83,19 +126,15 @@ class MKeyListener extends KeyAdapter {
         return key;
     }
 
-    public void setKey(char key) {
+    public synchronized void setKey(char key) {
         this.key = key;
     }
 
     @Override
     public void keyPressed(KeyEvent event) {
 
-        key = event.getKeyChar();
+        setKey(event.getKeyChar());
         System.out.println(key);
-//        try{
-//            wait();
-//        }catch (Exception e){
-//
-//        }
+
     }
 }
