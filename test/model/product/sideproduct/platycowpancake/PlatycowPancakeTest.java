@@ -12,7 +12,7 @@ public class PlatycowPancakeTest {
     public void platycowpancake_test(){
         System.out.println("PlatycowPancake Test");
         System.out.println("Id and harga test");
-        assertEquals(9,c.getID());
+        assertEquals(9,c.getIdProduct());
         assertEquals(30000,c.getHarga());
     }
 

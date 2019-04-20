@@ -12,7 +12,7 @@ public class ChickenMeatTest {
     public void chickenmeat_test(){
         System.out.println("ChickenMeat Test");
         System.out.println("Id and harga test");
-        assertEquals(2,c.getID());
+        assertEquals(2,c.getIdProduct());
         assertEquals(17000,c.getHarga());
     }
 }

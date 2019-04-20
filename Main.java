@@ -5,7 +5,9 @@ import controller.GameEngine;
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import model.list.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -30,6 +32,7 @@ public class Main {
         System.out.println("Gardahadi / 13517144" );
         System.out.println("Rika Dewi / 13517147" );
         String playerName = "Rika";
+        boolean gameOver = false;
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Silahkan Input Nama : ");
 //        String playerName = sc.next();
@@ -42,7 +45,7 @@ public class Main {
 
             //Initialize MainFrame
             F = new MainFrame();
-            F.renderAnimalCount(3);
+            F.renderAnimalCount(G.getanimals());
             F.renderName(playerName);
 
 
@@ -55,14 +58,19 @@ public class Main {
             TickThread T1 = new TickThread(F);
             T1.start();
 
-            updateMap();
+            //Initialize Map
+            for (int i = 0; i<G.WORLDSIZE; i++){
+                for(int j=0; j<G.WORLDSIZE;j++){
+                    F.renderCell(G.getID(i,j),i,j);
+                }
+            }
+            
+            
             GameMessage = new JLabel("Message : Hello Welcome to Engis Farm");
             ExceptionMessage = new JLabel("Error : Error Messages will be displayed here");
-            GameMessage.setBounds(400, 5, 200, 200);
-            ExceptionMessage.setBounds(400, 20, 200, 200);
             F.renderMsg(GameMessage);
-
-            while(true) {
+            F.renderMsg(ExceptionMessage);
+            while(!gameOver) {
 
                 if(listener.getKey()!= 'x'){
                     try {
@@ -70,16 +78,12 @@ public class Main {
                             G.handleMove(1);
                         } else if (listener.getKey() == 'a') {
                             G.handleMove(4);
-    
                         } else if (listener.getKey() == 's') {
                             G.handleMove(3);
-    
                         } else if (listener.getKey() == 'd') {
                             G.handleMove(2);
-    
                         } else if (listener.getKey() == 't') {
                             GameMessage = new JLabel(G.handleTalk());
-    
                         } else if (listener.getKey() == 'i') {
                             G.handleInteract();
                         } else if (listener.getKey() == 'k') {
@@ -89,13 +93,24 @@ public class Main {
                             System.exit(0);
                         }
                         G.updateGame();
-                        F.renderMsg(GameMessage);
+                        G.printKeadaan("Rika");
+                        // G.printMap();
                         updateMap();
+                        
+                        if(G.getanimals()<=0){
+                            gameOver = true;
+                            F.dispose();
+                            System.exit(0);
+                        }
+
+
                     } catch (EngiException E) {
-                        System.out.println("YoYoYO");
-                        ExceptionMessage = new JLabel(E.getMessage());
-                        F.renderMsg(ExceptionMessage);
+                        System.out.println("Masuk Exception 1");
+                        ExceptionMessage = new JLabel("Error : " + E.getMessage());
+
                         updateMap();
+                        G.printKeadaan("Rika");
+                        // G.printMap();
                     }
                     
                 }
@@ -105,46 +120,38 @@ public class Main {
                 catch (Exception e) {}
             }
         } catch (EngiException E){
-            System.out.println("Yo");
-            ExceptionMessage = new JLabel(E.getMessage());
-            F.renderMsg(ExceptionMessage);
+            System.out.println("Masuk Exception 2");
+            ExceptionMessage = new JLabel("Error : " + E.getMessage());
             updateMap();
         }
     }
 
     public static void updateMap(){
+        F.clearMsg();
         F.clearMap();
+        F.clearCondition();
+        F.clearInventory();
         for (int i = 0; i<G.WORLDSIZE; i++){
             for(int j=0; j<G.WORLDSIZE;j++){
                 F.renderCell(G.getID(i,j),i,j);
+                // System.out.print(G.getIdProduct(i, j) + " ");
+                
             }
+            // System.out.println();
         }
-    }
+        ArrayList<String> inventory = new ArrayList<String>(G.getInventoryList());
 
-}
-
-class TickThread extends Thread {
-
-    private MainFrame F;
-    private int count;
-
-    public TickThread(MainFrame frame){
-        F = frame;
-        count = 0;
-    }
-    public void run(){
-        while(true){
-            count++;
-            F.renderTick(count);
-            try { Thread.sleep(1000); }
-            catch (Exception e) {}
+        for(int i=0; i<inventory.size(); i++){
+            F.renderInventory(inventory.get(i));
         }
 
+        F.renderMsg(GameMessage);
+        F.renderMsg(ExceptionMessage);
+        F.renderCondition(G.getEngi().getWater(), G.getEngi().getMoney());
+        F.renderAnimalCount(G.getanimals());
     }
-
 }
-
-
+      
 class MKeyListener extends KeyAdapter {
 
     private char key;
@@ -169,3 +176,28 @@ class MKeyListener extends KeyAdapter {
 
     }
 }
+
+
+
+
+class TickThread extends Thread {
+
+    private MainFrame F;
+    private int count;
+
+    public TickThread(MainFrame frame){
+        F = frame;
+        count = 0;
+    }
+    public void run(){
+        while(true){
+            count++;
+            F.renderTick(count);
+            try { Thread.sleep(1000); }
+            catch (Exception e) {}
+        }
+
+    }
+
+}
+

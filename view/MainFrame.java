@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.Image;
 import javax.swing.*;
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ActionListener {
     
@@ -48,8 +49,12 @@ public class MainFrame extends JFrame implements ActionListener {
         LeftPanel = new JPanel(new GridLayout(2, 1));
         LeftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         InventoryPanel = new JPanel(new GridLayout(10,0));
-        CondPanel = new JPanel(new GridLayout(3,0));  
-        renderCondition(10, 5000, true);      
+        JLabel InventoryLabel = new JLabel ("Inventory : ");
+        InventoryPanel.add(InventoryLabel);
+        LeftPanel.add(InventoryPanel);
+
+        CondPanel = new JPanel(new GridLayout(2,0));  
+        renderCondition(10, 5000);      
 
         //Right Panel
         RightPanel = new JPanel();
@@ -72,11 +77,11 @@ public class MainFrame extends JFrame implements ActionListener {
         TopPanel.add(Ticker);
 
         //Bot Panel
-        BotPanel = new JPanel(null);
+        BotPanel = new JPanel(new GridLayout(2,0));
         BotPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        JLabel Msg1 = new JLabel("Message  : ");
+        // JLabel Msg1 = new JLabel("Message  : ");
         
-        BotPanel.add(Msg1);
+        // BotPanel.add(Msg1);
 
         //Mid Panel
         MidPanel = new JPanel(new BorderLayout());
@@ -85,7 +90,6 @@ public class MainFrame extends JFrame implements ActionListener {
         /*Create Map Instance */
         Map = new JPanel();
         Map.setLayout(new GridLayout(10,10));
-        renderStart();
         Map.setVisible(true);
         
         /*Add panels to Main Frame*/        
@@ -162,11 +166,14 @@ public class MainFrame extends JFrame implements ActionListener {
 //    }
 
     public void renderMsg(JLabel msg){
-        BotPanel.remove(msg);
-        BotPanel.revalidate();
-        BotPanel.repaint();
         BotPanel.add(msg);
         BotPanel.validate();
+    }
+
+    public void clearMsg(){
+        BotPanel.removeAll();
+        BotPanel.revalidate();
+        BotPanel.repaint();
     }
 
     public void renderName(String S){
@@ -198,23 +205,30 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
-    public void renderInventory(String[] List){
-        JLabel InventoryLabel = new JLabel ("Inventory : ");
-        InventoryPanel.add(InventoryLabel);
+
+    public void renderInventory(String X){
+        JLabel thingName = new JLabel(X);
+        InventoryPanel.add(thingName);
         LeftPanel.add(InventoryPanel);
     }
     
-    public void renderCondition(int water,int money, boolean available){
+    public void clearInventory(){
+        InventoryPanel.removeAll();
+        InventoryPanel.revalidate();
+        JLabel InventoryLabel = new JLabel ("Inventory : ");
+        InventoryPanel.add(InventoryLabel);
+    }
+
+    public void clearCondition(){
+        CondPanel.removeAll();
+        CondPanel.revalidate();
+        
+    }
+
+
+    public void renderCondition(int water,long money){
         JLabel WaterLabel = new JLabel ("Water : " + Integer.toString(water));
-        JLabel MoneyLabel = new JLabel ("Money : " + Integer.toString(money));
-        if (available) {
-            JLabel TruckLabel = new JLabel ("Truck : Available" );
-            CondPanel.add(TruckLabel);
-        }
-        else {
-            JLabel TruckLabel = new JLabel ("Truck : Busy" );
-            CondPanel.add(TruckLabel);
-        }
+        JLabel MoneyLabel = new JLabel ("Money : " + Long.toString(money));
         CondPanel.add(WaterLabel);
         CondPanel.add(MoneyLabel);
         LeftPanel.add(CondPanel);                
@@ -349,35 +363,14 @@ public class MainFrame extends JFrame implements ActionListener {
     //21 untuk truck
     //22 untuk player
 
-    public void renderStart(){
-        for (int row = 0; row < grid.length; row++) {
-            for (int col = 0; col < grid[row].length; col++) {
-                if(row<5 && col<5){
-                    grid[row][col] = new JLabel("       C");
-                }
-                else if (row<5 && col>=5){
-                    grid[row][col] = new JLabel("       B");
-                }
-                else{
-                    grid[row][col] = new JLabel("       G");
-                }
-                grid[row][col].setOpaque(true);
-                grid[row][col].setBackground(Color.GREEN);
-                grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                grid[row][col].setVisible(true);
-                Map.add(grid[row][col]);
-
-            }
-        }   
-    }
 
 
     private Color getGrassColor (int X) {
-       if (X%2 != 0) {
-           return Color.YELLOW;
+       if (X % 2 == 0) {
+           return Color.GREEN;
        } 
        else {
-           return Color.GREEN;
+           return Color.YELLOW;
        }
     }
     

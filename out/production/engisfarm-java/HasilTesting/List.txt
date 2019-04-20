@@ -1,0 +1,19 @@
+JUnit version 4.12
+.GetElmt Test
+.GetLastIdx Test
+.GetSize Test
+.RemoveAt Test
+.GetNeff Test
+.Add Test
+.GetFirstIdx Test
+.Find Test
+.isEmpty Test
+.isFull Test
+.Remove Test
+.List test
+.List Size test
+
+Time: 0.004
+
+OK (13 tests)
+

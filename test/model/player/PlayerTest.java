@@ -66,7 +66,7 @@ public class PlayerTest {
         }catch (EngiException e){
 
         }
-        assertEquals(p.getInventory().getElmt(0).getID(),3);
+        assertEquals(p.getInventory().getElmt(0).getIdProduct(),3);
 
         for(int i=1;i<10;i++){
             Bull b1 = new Bull();
