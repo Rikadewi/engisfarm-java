@@ -5,7 +5,9 @@ import controller.GameEngine;
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import model.list.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -90,12 +92,16 @@ public class Main {
                             System.exit(0);
                         }
                         G.updateGame();
+                        G.printKeadaan("Rika");
+                        G.printMap();
                         updateMap();
                     } catch (EngiException E) {
                         System.out.println("Masuk Exception 1");
                         ExceptionMessage = new JLabel("Error : " + E.getMessage());
 
                         updateMap();
+                        G.printKeadaan("Rika");
+                        G.printMap();
                     }
                     
                 }
@@ -115,11 +121,21 @@ public class Main {
         F.clearMsg();
         F.clearMap();
         F.clearCondition();
+        F.clearInventory();
         for (int i = 0; i<G.WORLDSIZE; i++){
             for(int j=0; j<G.WORLDSIZE;j++){
                 F.renderCell(G.getID(i,j),i,j);
+                // System.out.print(G.getID(i, j) + " ");
+                
             }
+            // System.out.println();
         }
+        ArrayList<String> inventory = new ArrayList<String>(G.getInventoryList());
+
+        for(int i=0; i<inventory.size(); i++){
+            F.renderInventory(inventory.get(i));
+        }
+
         F.renderMsg(GameMessage);
         F.renderMsg(ExceptionMessage);
         F.renderCondition(G.getEngi().getWater(), G.getEngi().getMoney());

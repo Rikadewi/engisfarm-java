@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.Image;
 import javax.swing.*;
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ActionListener {
     
@@ -204,12 +205,20 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
+
     public void renderInventory(String X){
         JLabel thingName = new JLabel(X);
         InventoryPanel.add(thingName);
         LeftPanel.add(InventoryPanel);
     }
     
+    public void clearInventory(){
+        InventoryPanel.removeAll();
+        InventoryPanel.revalidate();
+        JLabel InventoryLabel = new JLabel ("Inventory : ");
+        InventoryPanel.add(InventoryLabel);
+    }
+
     public void clearCondition(){
         CondPanel.removeAll();
         CondPanel.revalidate();
@@ -354,27 +363,6 @@ public class MainFrame extends JFrame implements ActionListener {
     //21 untuk truck
     //22 untuk player
 
-    public void renderStart(){
-        for (int row = 0; row < grid.length; row++) {
-            for (int col = 0; col < grid[row].length; col++) {
-                if(row<5 && col<5){
-                    grid[row][col] = new JLabel("       C");
-                }
-                else if (row<5 && col>=5){
-                    grid[row][col] = new JLabel("       B");
-                }
-                else{
-                    grid[row][col] = new JLabel("       G");
-                }
-                grid[row][col].setOpaque(true);
-                grid[row][col].setBackground(Color.GREEN);
-                grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                grid[row][col].setVisible(true);
-                Map.add(grid[row][col]);
-
-            }
-        }   
-    }
 
 
     private Color getGrassColor (int X) {
