@@ -378,7 +378,7 @@ public class GameEngine {
 
     /* FUNGSI UPDATE */
     public void updateGame() throws EngiException {
-        System.out.println("msk update gamess");
+        System.out.println("msk update games");
         tick++;
         //Menggerakan animal
         animals = 0;

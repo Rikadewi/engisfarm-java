@@ -366,11 +366,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 
     private Color getGrassColor (int X) {
-       if (X%2 != 0) {
-           return Color.YELLOW;
+       if (X % 2 == 0) {
+           return Color.GREEN;
        } 
        else {
-           return Color.GREEN;
+           return Color.YELLOW;
        }
     }
     

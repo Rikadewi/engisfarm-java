@@ -62,7 +62,7 @@ public class Land extends Cell {
         return -1;
     }
     public boolean isRumput(){
-        return true;
+        return rumput;
     }
     public void setRumput(boolean b){
         rumput = b;
