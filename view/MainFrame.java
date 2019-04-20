@@ -1,20 +1,12 @@
 package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
 import java.awt.Image;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import java.awt.Font;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -32,6 +24,19 @@ public class MainFrame extends JFrame implements ActionListener {
     private JLabel Animals;
     private JLabel Name;
     private JLabel Ticker;
+
+    private ImageIcon chicken;
+    private ImageIcon jago;
+    private ImageIcon bull;
+    private ImageIcon cow;
+    private ImageIcon player;
+    private ImageIcon perry;
+    private ImageIcon golden;
+    private ImageIcon truck;
+    private ImageIcon well;
+    private ImageIcon mixer;
+    
+
 
     public MainFrame() {
         setTitle("Rikas Farm Game");
@@ -67,14 +72,11 @@ public class MainFrame extends JFrame implements ActionListener {
         TopPanel.add(Ticker);
 
         //Bot Panel
-        BotPanel = new JPanel(new GridLayout(3,3));
+        BotPanel = new JPanel(null);
         BotPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        JLabel Msg1 = new JLabel("Message 1 : ");
-        JLabel Msg2 = new JLabel("Message 2 : ");
-        JLabel Msg3 = new JLabel("Message 3 : ");
+        JLabel Msg1 = new JLabel("Message  : ");
+        
         BotPanel.add(Msg1);
-        BotPanel.add(Msg2);
-        BotPanel.add(Msg3);
 
         //Mid Panel
         MidPanel = new JPanel(new BorderLayout());
@@ -82,9 +84,8 @@ public class MainFrame extends JFrame implements ActionListener {
         
         /*Create Map Instance */
         Map = new JPanel();
-        renderStart(); //Default map
-
         Map.setLayout(new GridLayout(10,10));
+        renderStart();
         Map.setVisible(true);
         
         /*Add panels to Main Frame*/        
@@ -99,6 +100,57 @@ public class MainFrame extends JFrame implements ActionListener {
         add(MidPanel,BorderLayout.CENTER);
         MidPanel.add(Map, BorderLayout.CENTER);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        chicken = new ImageIcon("view/assets/chicken.png");
+        Image image = chicken.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        chicken = new ImageIcon(newimg);  // transform it back
+
+
+        jago = new ImageIcon("view/assets/jago.png");
+        image = jago.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        jago = new ImageIcon(newimg);  // transform it back
+
+        bull = new ImageIcon("view/assets/pdip.png");
+        image = bull.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        bull = new ImageIcon(newimg);  // transform it back
+
+        cow = new ImageIcon("view/assets/cow.png");
+        image = cow.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        cow = new ImageIcon(newimg);  // transform it back
+
+        player = new ImageIcon("view/assets/player.png");
+        image = player.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        player = new ImageIcon(newimg);  // transform it back
+
+        perry = new ImageIcon("view/assets/perry.png");
+        image = perry.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        perry = new ImageIcon(newimg);  // transform it back
+
+        golden = new ImageIcon("view/assets/golden.png");
+        image = golden.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        golden = new ImageIcon(newimg);  // transform it back
+
+        truck = new ImageIcon("view/assets/b.png");
+        image = truck.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        truck = new ImageIcon(newimg);  // transform it back
+
+        well = new ImageIcon("view/assets/b.png");
+        image = well.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        well = new ImageIcon(newimg);  // transform it back
+
+        mixer = new ImageIcon("view/assets/b.png");
+        image = mixer.getImage(); // transform it 
+        newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        mixer = new ImageIcon(newimg);  // transform it back
     }
 
 //    public boolean getRunning () {
@@ -108,6 +160,14 @@ public class MainFrame extends JFrame implements ActionListener {
 //    public void setRunning(boolean running) {
 //        isRunning = running;
 //    }
+
+    public void renderMsg(JLabel msg){
+        BotPanel.remove(msg);
+        BotPanel.revalidate();
+        BotPanel.repaint();
+        BotPanel.add(msg);
+        BotPanel.validate();
+    }
 
     public void renderName(String S){
         Name = new JLabel("Name : " + S);
@@ -179,110 +239,61 @@ public class MainFrame extends JFrame implements ActionListener {
     //22 untuk player
     private ImageIcon getIcon (int X) {
 
-        ImageIcon imageIcon = new ImageIcon("assets/b.png");
+        ImageIcon imageIcon = new ImageIcon("view/assets/b.png");
 
         if (X==1 || X==2){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/chicken.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it 
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = chicken;
+
         }
         else if(X==3 || X==4){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/jago.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it 
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = jago;
          }
         else if(X==5 || X==6){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/cow.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = cow;
          }
         else if(X==7 || X==8){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/golden.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = golden;
 
         }
         else if(X==9 || X==10){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/platypus.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = perry;
 
         }
         else if(X==11 || X==12){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/pdip.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = bull;
 
         }
         else if(X==19){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = well;
 
         }
         else if(X==20){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = mixer;
 
         }
         else if(X==21){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/b.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
+            imageIcon = truck;
 
         }
         else if(X==22){
             /*Code to create image Icon*/
-            imageIcon = new ImageIcon("assets/player.png"); // load the image to a imageIcon
-            Image image = imageIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            imageIcon = new ImageIcon(newimg);  // transform it back
-
+            imageIcon = player;
         }
 
         return imageIcon;
 
     }
 
-    //To DO Add parameter matrix of Int and make cases (1-12 animal, 19-21 facility, 13-18 Land, 20 mixer, 21 truck 22 player)
-//    public void render(){
-//        for (int row = 0; row < grid.length; row++) {
-//            for (int col = 0; col < grid[row].length; col++) {
-//                if(row<5 && col<5){
-//                    grid[row][col] = new JLabel("       C");
-//                }
-//                else if (row<5){
-//                    grid[row][col] = new JLabel("       B");
-//                }
-//                else{
-//                    grid[row][col] = new JLabel("       G");
-//                }
-//                // grid[row][col].setIcon(getIcon(X));
-//                grid[row][col].setOpaque(false);
-//                grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//                Map.add(grid[row][col]);
-//            }
-//        }
-//    }
+
 
     public void clearMap(){
         Map.removeAll();
@@ -294,8 +305,10 @@ public class MainFrame extends JFrame implements ActionListener {
     public void renderCell(int X, int row, int col){
 
         if (X>=1 && X<=12) {
-            grid[row][col] = new JLabel(getIcon(X));
+            grid[row][col] = new JLabel();
+            grid[row][col].setIcon(getIcon(X));
         }
+
         else if (X>=13 && X<=18) {
             if (X == 13 || X == 14) {
                 grid[row][col] = new JLabel("B");
@@ -310,12 +323,12 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         else {
             grid[row][col] = new JLabel(getIcon(X));
+            grid[row][col].setIcon(getIcon(X));
         }
-//        grid[row][col].setOpaque(false);
+        grid[row][col].setOpaque(true);
         grid[row][col].setBackground(getGrassColor(X));
         grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-
+        Map.add(grid[row][col]);
     }
     //0 untuk out of bound
     //1-12 untuk farm animal (ganjil laper, genap kenyang)
@@ -342,17 +355,18 @@ public class MainFrame extends JFrame implements ActionListener {
                 if(row<5 && col<5){
                     grid[row][col] = new JLabel("       C");
                 }
-                else if (row<5){
+                else if (row<5 && col>=5){
                     grid[row][col] = new JLabel("       B");
                 }
                 else{
                     grid[row][col] = new JLabel("       G");
                 }
-                // grid[row][col].setIcon(getIcon(X));
-//                grid[row][col].setOpaque(false);
+                grid[row][col].setOpaque(true);
                 grid[row][col].setBackground(Color.GREEN);
                 grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                grid[row][col].setVisible(true);
                 Map.add(grid[row][col]);
+
             }
         }   
     }

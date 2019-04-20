@@ -110,7 +110,7 @@ public class GameEngine {
     }
 
     public int look(int i, int j) {
-        if (i >= 0 && i < 13 && j >= 0 && j < 13) {
+        if (i >= 0 && i < 10 && j >= 0 && j < 10) {
             return world[i][j].render();
         } else {
             return 0;
