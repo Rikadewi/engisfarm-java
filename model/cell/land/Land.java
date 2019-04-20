@@ -11,6 +11,7 @@ import model.EngiException;
 import model.cell.Cell;
 import model.farmanimal.FarmAnimal;
 import model.player.Player;
+import java.util.LinkedList;
 
 //implementasi kurangin farm animal
 public class Land extends Cell {
@@ -18,6 +19,7 @@ public class Land extends Cell {
     private boolean rumput; 
     private FarmAnimal animal;
     private String landType;
+    private static LinkedList<String> list_of_landType = new LinkedList<String>(){{add("barn"); add("coop"); add("grassland");}};
     public Land () {}
     public Land (boolean rumput, FarmAnimal animal, String landType){
         this.rumput = rumput;
@@ -28,7 +30,7 @@ public class Land extends Cell {
     public int render(){
         if(getPlayer() == null){
             if(getAnimal() == null){
-                if(landType == "barn"){
+                if(landType == list_of_landType.get(0)){
                     if(isRumput()){
                         return 14;
                     }else{
@@ -36,14 +38,14 @@ public class Land extends Cell {
                     }
                 }
     
-                if(landType == "coop"){
+                if(landType == list_of_landType.get(1)){
                     if(isRumput()){
                         return 16;
                     }else{
                         return 15;
                     }
                 }
-                if(landType == "grassLand"){
+                if(landType == list_of_landType.get(2)){
                     if(isRumput()){
                         return 18;
                     }else{

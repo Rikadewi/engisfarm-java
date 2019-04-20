@@ -32,6 +32,7 @@ public class Main {
         System.out.println("Gardahadi / 13517144" );
         System.out.println("Rika Dewi / 13517147" );
         String playerName = "Rika";
+        boolean gameOver = false;
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Silahkan Input Nama : ");
 //        String playerName = sc.next();
@@ -44,7 +45,7 @@ public class Main {
 
             //Initialize MainFrame
             F = new MainFrame();
-            F.renderAnimalCount(3);
+            F.renderAnimalCount(G.getanimals());
             F.renderName(playerName);
 
 
@@ -69,7 +70,7 @@ public class Main {
             ExceptionMessage = new JLabel("Error : Error Messages will be displayed here");
             F.renderMsg(GameMessage);
             F.renderMsg(ExceptionMessage);
-            while(true) {
+            while(!gameOver) {
 
                 if(listener.getKey()!= 'x'){
                     try {
@@ -93,15 +94,23 @@ public class Main {
                         }
                         G.updateGame();
                         G.printKeadaan("Rika");
-                        G.printMap();
+                        // G.printMap();
                         updateMap();
+                        
+                        if(G.getanimals()<=0){
+                            gameOver = true;
+                            F.dispose();
+                            System.exit(0);
+                        }
+
+
                     } catch (EngiException E) {
                         System.out.println("Masuk Exception 1");
                         ExceptionMessage = new JLabel("Error : " + E.getMessage());
 
                         updateMap();
                         G.printKeadaan("Rika");
-                        G.printMap();
+                        // G.printMap();
                     }
                     
                 }
@@ -139,7 +148,7 @@ public class Main {
         F.renderMsg(GameMessage);
         F.renderMsg(ExceptionMessage);
         F.renderCondition(G.getEngi().getWater(), G.getEngi().getMoney());
-        
+        F.renderAnimalCount(G.getanimals());
     }
 }
       

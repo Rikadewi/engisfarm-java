@@ -22,7 +22,8 @@ import model.player.Player;
 import model.product.Product;
 import model.list.List;
 import java.util.ArrayList;
-
+import java.util.Vector;
+import java.util.Stack;
 import java.util.Random;
 
 // import com.sun.org.apache.xpath.internal.operations.String;
@@ -121,8 +122,8 @@ public class GameEngine {
     }
 
     // TUNGGU IMPLEMENTASI JAVA LIST
-    public List<Integer> lookAround(int x, int y) throws EngiException {
-        List<Integer> around = new List<Integer>();
+    public Vector<Integer> lookAround(int x, int y) throws EngiException {
+        Vector<Integer> around = new Vector<Integer>();
         //lihat objek utara (x-1)(y)
         around.add(look(x - 1, y));
         //lihat objek timur (x)(y+1)
@@ -138,7 +139,7 @@ public class GameEngine {
     public void handleInteract() throws EngiException {
         //Mendapatkan list yang berisi objek disekitarnya
         // cout << "pass1\n";
-        List<Integer> around = lookAround(xPlayer, yPlayer);
+        Vector<Integer> around = lookAround(xPlayer, yPlayer);
         boolean foundAnimal = false;
         boolean foundFacility = false;
         int i = 0;
@@ -148,9 +149,9 @@ public class GameEngine {
         // cout << "pass2\n";
         while (!foundAnimal && !foundFacility && (i < 4)) {
             //jika animal
-            if (around.getElmt(i) >= 1 && around.getElmt(i) <= 10) {
+            if (around.get(i) >= 1 && around.get(i) <= 10) {
                 foundAnimal = true;
-            } else if (around.getElmt(i) >= 19 && around.getElmt(i) <= 21) { //facility
+            } else if (around.get(i) >= 19 && around.get(i) <= 21) { //facility
                 foundFacility = true;
                 pos = i;
             } else {
@@ -179,11 +180,11 @@ public class GameEngine {
         }
 
         if (foundFacility) {
-            if (around.getElmt(i) == 19) {//well
+            if (around.get(i) == 19) {//well
                 getEngi().interactWell();
-            } else if (around.getElmt(i) == 20) {//mixer
+            } else if (around.get(i) == 20) {//mixer
                 getEngi().interactMixer();
-            } else if (around.getElmt(i) == 21) {//truck
+            } else if (around.get(i) == 21) {//truck
 
                 if (pos == 0) x = xPlayer - 1;
                 if (pos == 1) y = yPlayer + 1;
@@ -200,23 +201,23 @@ public class GameEngine {
         }
     }
 
-    boolean moveAnimal(FarmAnimal f, List<Integer> around, int i) {
+    boolean moveAnimal(FarmAnimal f, Vector<Integer> around, int i) {
         boolean found = false;
         //penghasil telur move bisa ke coop 15 16
         if (f.isEgg()) {
-            if (around.getElmt(i) == 15 || around.getElmt(i) == 16) {
+            if (around.get(i) == 15 || around.get(i) == 16) {
                 found = true;
             }
         }
         //penghasil daging move bisa ke barn 13 14
         if (f.isMeat()) {
-            if (around.getElmt(i) == 13 || around.getElmt(i) == 14) {
+            if (around.get(i) == 13 || around.get(i) == 14) {
                 found = true;
             }
         }
         //move bisa ke grassland 17 18
         if (f.isMilk()) {
-            if (around.getElmt(i) == 17 || around.getElmt(i) == 18) {
+            if (around.get(i) == 17 || around.get(i) == 18) {
                 found = true;
             }
         }
@@ -224,7 +225,7 @@ public class GameEngine {
     }
 
     public void handleMoveAnimal(int x, int y) throws EngiException {
-        List<Integer> around = lookAround(x, y);
+        Vector<Integer> around = lookAround(x, y);
         FarmAnimal f = world[x][y].getAnimal();
         if (f != null) {
             if (!f.getMoved()) {
@@ -265,12 +266,12 @@ public class GameEngine {
     }
 
     public void handleMove(int n) throws EngiException {
-        List<Integer> around = lookAround(xPlayer, yPlayer);
+        Vector<Integer> around = lookAround(xPlayer, yPlayer);
         boolean found = false;
         int i = 0;
         Player P = getEngi();
         if (n == 1) {//atas
-            if ((around.getElmt(0)) >= 13 && (around.getElmt(0)) <= 18) {
+            if ((around.get(0)) >= 13 && (around.get(0)) <= 18) {
                 world[xPlayer][yPlayer].setPlayer(null);
                 xPlayer--;
                 world[xPlayer][yPlayer].setPlayer(P);
@@ -279,7 +280,7 @@ public class GameEngine {
                 throw e;
             }
         } else if (n == 2) {//kanan
-            if ((around.getElmt(1)) >= 13 && (around.getElmt(1)) <= 18) {
+            if ((around.get(1)) >= 13 && (around.get(1)) <= 18) {
                 world[xPlayer][yPlayer].setPlayer(null);
                 yPlayer++;
                 world[xPlayer][yPlayer].setPlayer(P);
@@ -288,7 +289,7 @@ public class GameEngine {
                 throw e;
             }
         } else if (n == 3) {//bawah
-            if ((around.getElmt(2)) >= 13 && (around.getElmt(2)) <= 18) {
+            if ((around.get(2)) >= 13 && (around.get(2)) <= 18) {
                 world[xPlayer][yPlayer].setPlayer(null);
                 xPlayer++;
                 world[xPlayer][yPlayer].setPlayer(P);
@@ -297,7 +298,7 @@ public class GameEngine {
                 throw e;
             }
         } else if (n == 4) {//kiri
-            if ((around.getElmt(3)) >= 13 && (around.getElmt(3)) <= 18) {
+            if ((around.get(3)) >= 13 && (around.get(3)) <= 18) {
                 world[xPlayer][yPlayer].setPlayer(null);
                 yPlayer--;
                 world[xPlayer][yPlayer].setPlayer(P);
@@ -313,21 +314,21 @@ public class GameEngine {
     }
 
     public String handleTalk() throws EngiException {
-        List<Integer> around = lookAround(xPlayer, yPlayer);
+        Vector<Integer> around = lookAround(xPlayer, yPlayer);
         String s;
-        if (around.getElmt(0) >= 1 && around.getElmt(0) <= 12) {
+        if (around.get(0) >= 1 && around.get(0) <= 12) {
             FarmAnimal temp = world[xPlayer - 1][yPlayer].getAnimal();
             s = getEngi().talk(temp);
             return s;
-        } else if (around.getElmt(1) >= 1 && around.getElmt(1) <= 12) {
+        } else if (around.get(1) >= 1 && around.get(1) <= 12) {
             FarmAnimal temp = world[xPlayer][yPlayer + 1].getAnimal();
             s = getEngi().talk(temp);
             return s;
-        } else if (around.getElmt(2) >= 1 && around.getElmt(2) <= 12) {
+        } else if (around.get(2) >= 1 && around.get(2) <= 12) {
             FarmAnimal temp = world[xPlayer + 1][yPlayer].getAnimal();
             s = getEngi().talk(temp);
             return s;
-        } else if (around.getElmt(3) >= 1 && around.getElmt(3) <= 12) {
+        } else if (around.get(3) >= 1 && around.get(3) <= 12) {
             FarmAnimal temp = world[xPlayer][yPlayer - 1].getAnimal();
             s = getEngi().talk(temp);
             return s;
@@ -338,12 +339,12 @@ public class GameEngine {
     }
 
     public void handleKill() throws EngiException {
-        List<Integer> around = lookAround(xPlayer, yPlayer);
+        Vector<Integer> around = lookAround(xPlayer, yPlayer);
         boolean hasKill = false;
         int i = 0;
         while (!hasKill && i < 4) {
             //penghasil daging id = 1 2 3 4 5 6 11 12
-            if ((around.getElmt(i) >= 1 && around.getElmt(i) <= 6) || around.getElmt(i) == 11 || around.getElmt(i) == 12) {
+            if ((around.get(i) >= 1 && around.get(i) <= 6) || around.get(i) == 11 || around.get(i) == 12) {
                 hasKill = true;
             } else {
                 i++;
@@ -552,8 +553,6 @@ public class GameEngine {
    }
 
     public ArrayList getInventoryList(){
-        
-        
         ArrayList<String> retList = new ArrayList<String>();
         List <Product>  productList = getEngi().getInventory();
         for(int i = 0; i< productList.getNeff(); i++){
@@ -575,8 +574,8 @@ public class GameEngine {
    public void printKeadaan(String Name){
        System.out.println( "Ticks : " + tick );
        System.out.println( "Nama Player :" + Name );
-           System.out.println( "Water : " + getEngi().getWater() );
-           System.out.println( "Money : " + getEngi().getMoney() );
+       System.out.println( "Water : " + getEngi().getWater() );
+       System.out.println( "Money : " + getEngi().getMoney() );
        System.out.println( "Jumlah Animal : " + animals);
        System.out.print("Inventory : ");
        List <Product>  productList = getEngi().getInventory();
