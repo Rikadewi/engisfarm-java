@@ -57,9 +57,30 @@ public class MainFrame extends JFrame implements ActionListener {
         renderCondition(10, 5000);      
 
         //Right Panel
-        RightPanel = new JPanel();
+        RightPanel = new JPanel(new GridLayout(10,0));
         RightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JLabel label1 = new JLabel("   Controls : ");
+        JLabel label2 = new JLabel("   W : Move Up ");
+        JLabel label3 = new JLabel("   A : Move Left");
+        JLabel label4 = new JLabel("   S : Move Down");
+        JLabel label5 = new JLabel("   D : Move Right");
+        JLabel label6 = new JLabel("   K : Kill");
+        JLabel label7 = new JLabel("   I : Interact");
+        JLabel label8 = new JLabel("   G : Grow");
+        JLabel label9 = new JLabel("   T : Talk");
+        JLabel label10 = new JLabel("   Q : EXIT");
         
+        RightPanel.add(label1);
+        RightPanel.add(label2);
+        RightPanel.add(label3);
+        RightPanel.add(label4);
+        RightPanel.add(label5);
+        RightPanel.add(label6);
+        RightPanel.add(label7);
+        RightPanel.add(label8);
+        RightPanel.add(label9);
+        RightPanel.add(label10);
+
         //Top Panel
         TopPanel = new JPanel(null);
         TopPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -105,7 +126,7 @@ public class MainFrame extends JFrame implements ActionListener {
         MidPanel.add(Map, BorderLayout.CENTER);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        chicken = new ImageIcon("view/assets/chicken.png");
+        chicken = new ImageIcon("view/assets/b.png");
         Image image = chicken.getImage(); // transform it 
         Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         chicken = new ImageIcon(newimg);  // transform it back
@@ -136,22 +157,22 @@ public class MainFrame extends JFrame implements ActionListener {
         newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         perry = new ImageIcon(newimg);  // transform it back
 
-        golden = new ImageIcon("view/assets/golden.png");
+        golden = new ImageIcon("view/assets/goldenperry.png");
         image = golden.getImage(); // transform it 
         newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         golden = new ImageIcon(newimg);  // transform it back
 
-        truck = new ImageIcon("view/assets/b.png");
+        truck = new ImageIcon("view/assets/truck.png");
         image = truck.getImage(); // transform it 
         newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         truck = new ImageIcon(newimg);  // transform it back
 
-        well = new ImageIcon("view/assets/b.png");
+        well = new ImageIcon("view/assets/well.png");
         image = well.getImage(); // transform it 
         newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         well = new ImageIcon(newimg);  // transform it back
 
-        mixer = new ImageIcon("view/assets/b.png");
+        mixer = new ImageIcon("view/assets/Cheese_Maker.png");
         image = mixer.getImage(); // transform it 
         newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         mixer = new ImageIcon(newimg);  // transform it back
@@ -209,12 +230,12 @@ public class MainFrame extends JFrame implements ActionListener {
     public void renderInventory(String X){
         JLabel thingName = new JLabel(X);
         InventoryPanel.add(thingName);
-        LeftPanel.add(InventoryPanel);
     }
     
     public void clearInventory(){
         InventoryPanel.removeAll();
         InventoryPanel.revalidate();
+        InventoryPanel.repaint();
         JLabel InventoryLabel = new JLabel ("Inventory : ");
         InventoryPanel.add(InventoryLabel);
     }
@@ -324,9 +345,7 @@ public class MainFrame extends JFrame implements ActionListener {
             if(X%2 != 0){
                 grid[row][col].setBackground(Color.RED);
             }
-            else{
-                grid[row][col].setBackground(getGrassColor(X));
-            }
+
         }
 
         else if (X>=13 && X<=18) {
@@ -347,32 +366,15 @@ public class MainFrame extends JFrame implements ActionListener {
         else {
             grid[row][col] = new JLabel(getIcon(X));
             grid[row][col].setIcon(getIcon(X));
-            grid[row][col].setBackground(getGrassColor(X));
+            if(X!=22){
+                grid[row][col].setBackground(getGrassColor(X));
+
+            }
         }
         grid[row][col].setOpaque(true);
         grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
         Map.add(grid[row][col]);
     }
-    //0 untuk out of bound
-    //1-12 untuk farm animal (ganjil laper, genap kenyang)
-    //egg and milk producing? ada brpa?
-    //1-2 Chicken Kampung -- egg, meat
-    //3-4 ChickenJago -- Meat
-    //5-6 Cow -- milk, meat
-    //7-8 Golden Platypus -- egg,milk
-    //9-10 Platypus -- egg,milk
-    //11-12 Bull -- Meat
-    //13-18 untuk land (ganjil tdk berumput, genap berumput)
-    //13-14 Barn
-    //15-16 Coop
-    //17-18 GrassLand
-    //19-21 untuk facility
-    //19 untuk well
-    //20 untuk mixer
-    //21 untuk truck
-    //22 untuk player
-
-
 
     private Color getGrassColor (int X) {
        if (X % 2 == 0) {
@@ -382,14 +384,7 @@ public class MainFrame extends JFrame implements ActionListener {
            return Color.YELLOW;
        }
     }
-
      
-
-
-//
-//
-
-//
         @Override
         public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub

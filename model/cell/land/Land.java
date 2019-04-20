@@ -96,14 +96,14 @@ public class Land extends Cell {
         }
         
         if(updateType.equals("makan")){
-            System.out.println("msk update cell makan");
+            // System.out.println("msk update cell makan");
             FarmAnimal F = getAnimal();
             if(F != null){
                 if(isRumput()){
                     if (F.isHungry()){
                         F.makan();
                         setRumput(false);
-                        System.out.println("selesai makan");
+                        // System.out.println("selesai makan");
                     }
                 }
             }
