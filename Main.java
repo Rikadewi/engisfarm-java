@@ -88,6 +88,8 @@ public class Main {
                             G.handleInteract();
                         } else if (listener.getKey() == 'k') {
                             G.handleKill();
+                        } else if (listener.getKey() == 'g') {
+                            G.handleGrow();
                         } else if (listener.getKey() == 'q') {
                             F.dispose();
                             System.exit(0);
