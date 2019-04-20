@@ -3,7 +3,7 @@ package model.farmanimal;
 import model.EngiException;
 import model.product.farmproduct.FarmProduct;
 
-public abstract class FarmAnimal{
+public abstract class FarmAnimal implements Animal{
     public final int DEFAULTLIVINGTIME = 5;
     public final int DEFAULTHUNGRYTIME = 5;
     private boolean hungry;
