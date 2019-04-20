@@ -20,7 +20,7 @@ public class Product {
         this.harga = harga;
     }
 
-    public int getID(){
+    public int getIdProduct(){
         return id;
     }
 

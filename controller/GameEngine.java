@@ -556,8 +556,8 @@ public class GameEngine {
     public ArrayList getInventoryList(){
         ArrayList<String> retList = new ArrayList<String>();
         List <Product>  productList = getEngi().getInventory();
-        for(int i = 0; i< productList.getNeff(); i++){
-            switch (productList.getElmt(i).getID()){
+        for(int i = 0; i< productList.getNEff(); i++){
+            switch (productList.getElmt(i).getIdProduct()){
                     case 1 : retList.add("ChickenEgg"); break;
                     case 2 : retList.add( "ChickenMeat"); break;
                     case 3 : retList.add( "CowMeat"); break;
@@ -580,8 +580,8 @@ public class GameEngine {
        System.out.println( "Jumlah Animal : " + animals);
        System.out.print("Inventory : ");
        List <Product>  productList = getEngi().getInventory();
-       for(int i = 0; i< productList.getNeff(); i++){
-               switch (productList.getElmt(i).getID())
+       for(int i = 0; i< productList.getNEff(); i++){
+               switch (productList.getElmt(i).getIdProduct())
                {
                        case 1 : System.out.print( "ChickenEgg"); break;
                case 2 : System.out.print( "ChickenMeat"); break;

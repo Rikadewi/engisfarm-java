@@ -8,8 +8,8 @@ public class List<Type> {
     
     private Type []data;
     private int size;
-    private int Neff;
-    private static final int IdxMin =0;
+    private int nEff;
+    private static final int IDXMIN =0;
     private static final int MAXSIZE =256;
 
 //    public List(){
@@ -30,30 +30,30 @@ public class List<Type> {
 //    }
     public List(){
         size = MAXSIZE;
-        Neff =0;
+        nEff =0;
         data = (Type[]) new Object[size];
     }
 
     public List(int _size){
         size = _size;
-        Neff =0;
+        nEff =0;
         data = (Type[]) new Object[size];
     }
 
         //Services
     public boolean isEmpty() {
-        return (Neff == 0);
+        return (nEff == 0);
     }
     public boolean isFull() {
-        return (Neff == size);
+        return (nEff == size);
     }
 
-    public void add(Type X) throws EngiException {
+    public void add(Type x) throws EngiException {
         try
         {    
-            if(size > Neff){
-                data[Neff] = X;
-                Neff++;
+            if(size > nEff){
+                data[nEff] = x;
+                nEff++;
             }
             else {
                 throw new EngiException("List penuh, tidak dapat menambahkan objek baru") ;
@@ -74,7 +74,7 @@ public class List<Type> {
         for(int i=idx; i<getLastIdx(); i++){
             data[i] = data[i+1];
         }
-        Neff--;
+        nEff--;
     }
 
 
@@ -82,7 +82,7 @@ public class List<Type> {
     public int find(Type elmt) throws EngiException{
         boolean found = false;
         int i=0;
-        while(!found && i<Neff){
+        while(!found && i<nEff){
             if(data[i] == elmt){
                 found = true;
             }
@@ -104,15 +104,15 @@ public class List<Type> {
     public int getSize(){
         return size;
     }
-    public int getNeff(){
-        return Neff;
+    public int getNEff(){
+        return nEff;
     }
     public int getFirstIdx(){
-        return IdxMin;
+        return IDXMIN;
     }
     public int getLastIdx() {
-        if(Neff > 0)
-            return Neff-1;
+        if(nEff > 0)
+            return nEff-1;
         else
             return 0;
     }

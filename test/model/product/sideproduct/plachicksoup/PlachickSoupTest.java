@@ -12,7 +12,7 @@ public class PlachickSoupTest {
     public void chicken_test(){
         System.out.println("PlachickSoup Test");
         System.out.println("Id and harga test");
-        assertEquals(8,c.getID());
+        assertEquals(8,c.getIdProduct());
         assertEquals(55000,c.getHarga());
     }
 }

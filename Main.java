@@ -134,7 +134,7 @@ public class Main {
         for (int i = 0; i<G.WORLDSIZE; i++){
             for(int j=0; j<G.WORLDSIZE;j++){
                 F.renderCell(G.getID(i,j),i,j);
-                // System.out.print(G.getID(i, j) + " ");
+                // System.out.print(G.getIdProduct(i, j) + " ");
                 
             }
             // System.out.println();

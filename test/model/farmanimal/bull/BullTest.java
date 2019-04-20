@@ -33,7 +33,7 @@ public class BullTest {
         boolean err = false;
         try{
             f = b.getProduct(true);
-            assertEquals(f.getID(),3);
+            assertEquals(f.getIdProduct(),3);
         }catch (EngiException e){
             if (e.getMessage().equals("Bull tidak memiliki susu")){
                 err = true;
@@ -53,7 +53,7 @@ public class BullTest {
 
     @Test
     public void getIdTest(){
-        System.out.println("getID test");
+        System.out.println("getIdProduct test");
         b.setHungry(true);
         assertEquals(11,b.getId());
         b.setHungry(false);

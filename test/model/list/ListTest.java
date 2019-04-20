@@ -12,7 +12,7 @@ public class ListTest {
         System.out.println("List test");
         List<Integer> l = new List<Integer>();
         assertEquals(l.getSize(),256);
-        assertEquals(l.getNeff(),0);
+        assertEquals(l.getNEff(),0);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class ListTest {
         System.out.println("List Size test");
         List<Integer> l = new List<Integer>(5);
         assertEquals(l.getSize(),5);
-        assertEquals(l.getNeff(),0);
+        assertEquals(l.getNEff(),0);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class ListTest {
         }
         int x = l.getElmt(0);
         assertEquals(x,3);
-        assertEquals(l.getNeff(),1);
+        assertEquals(l.getNEff(),1);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ListTest {
         l.removeAt(2);
         int x = l.getElmt(0);
         assertEquals(x,2);
-        assertEquals(l.getNeff(),2);
+        assertEquals(l.getNEff(),2);
     }
 
     @Test
@@ -150,16 +150,16 @@ public class ListTest {
     }
 
     @Test
-    public void getNeffTest(){
+    public void getNEffTest(){
         System.out.println("GetNeff Test");
         List<Integer> l = new List<Integer>();
-        assertEquals(l.getNeff(),0);
+        assertEquals(l.getNEff(),0);
         try{
             l.add(2);
             l.add(3);
         }catch (EngiException e){
         }
-        assertEquals(l.getNeff(),2);
+        assertEquals(l.getNEff(),2);
     }
 
     @Test
