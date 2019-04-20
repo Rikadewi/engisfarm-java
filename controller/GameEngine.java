@@ -64,7 +64,7 @@ public class GameEngine {
         for (int i = 0; i < WORLDSIZE; i++) {
             for (int j = 0; j < WORLDSIZE; j++) {
                 {
-                    world[i][j] = new Land(false, null, "grassLand");
+                    world[i][j] = new Land(true, null, "grassLand");
                 }
             }
         }
@@ -75,13 +75,13 @@ public class GameEngine {
         //Menetapkan Coop
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                world[i][j] = new Land(false, null, "coop");
+                world[i][j] = new Land(true, null, "coop");
             }
         }
 
         for (int i = 0; i < 5; i++) {
             for (int j = 5; j < 10; j++) {
-                world[i][j] = new Land(false, null, "barn");
+                world[i][j] = new Land(true, null, "barn");
             }
         }
 

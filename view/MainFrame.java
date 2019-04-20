@@ -321,26 +321,32 @@ public class MainFrame extends JFrame implements ActionListener {
         if (X>=1 && X<=12) {
             grid[row][col] = new JLabel();
             grid[row][col].setIcon(getIcon(X));
+            if(X%2 != 0){
+                grid[row][col].setBackground(Color.RED);
+            }
         }
 
         else if (X>=13 && X<=18) {
             if (X == 13 || X == 14) {
                 grid[row][col] = new JLabel("B");
+                grid[row][col].setBackground(getGrassColor(X));
             }
             else if (X==15 || X==16){
                 grid[row][col] = new JLabel("C");
+                grid[row][col].setBackground(getGrassColor(X));
             }
             else if (X==17 || X==18) {
                 grid[row][col] = new JLabel("G");
+                grid[row][col].setBackground(getGrassColor(X));
             }
 
         }
         else {
             grid[row][col] = new JLabel(getIcon(X));
             grid[row][col].setIcon(getIcon(X));
+            grid[row][col].setBackground(getGrassColor(X));
         }
         grid[row][col].setOpaque(true);
-        grid[row][col].setBackground(getGrassColor(X));
         grid[row][col].setBorder(BorderFactory.createLineBorder(Color.BLACK));
         Map.add(grid[row][col]);
     }
@@ -373,7 +379,8 @@ public class MainFrame extends JFrame implements ActionListener {
            return Color.YELLOW;
        }
     }
-    
+
+     
 
 
 //
