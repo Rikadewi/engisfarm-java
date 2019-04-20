@@ -325,7 +325,7 @@ public class GameEngine {
             s = getEngi().talk(temp);
             return s;
         } else if (around.getElmt(3) >= 1 && around.getElmt(3) <= 12) {
-            FarmAnimal temp = world[XPlayer][YPlayer + 1].getAnimal();
+            FarmAnimal temp = world[XPlayer][YPlayer - 1].getAnimal();
             s = getEngi().talk(temp);
             return s;
         } else {
@@ -547,7 +547,11 @@ public class GameEngine {
 //                break;
 //        }
 //    }
-//
+
+// public String[] getInventoryList(){
+    
+// }
+
 //    public void printKeadaan(String Name){
 //        System.out.println( "Ticks : " + tick );
 //        System.out.println( "Nama Player :" + Name );

@@ -48,8 +48,12 @@ public class MainFrame extends JFrame implements ActionListener {
         LeftPanel = new JPanel(new GridLayout(2, 1));
         LeftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         InventoryPanel = new JPanel(new GridLayout(10,0));
-        CondPanel = new JPanel(new GridLayout(3,0));  
-        renderCondition(10, 5000, true);      
+        JLabel InventoryLabel = new JLabel ("Inventory : ");
+        InventoryPanel.add(InventoryLabel);
+        LeftPanel.add(InventoryPanel);
+
+        CondPanel = new JPanel(new GridLayout(2,0));  
+        renderCondition(10, 5000);      
 
         //Right Panel
         RightPanel = new JPanel();
@@ -72,11 +76,11 @@ public class MainFrame extends JFrame implements ActionListener {
         TopPanel.add(Ticker);
 
         //Bot Panel
-        BotPanel = new JPanel(null);
+        BotPanel = new JPanel(new GridLayout(2,0));
         BotPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        JLabel Msg1 = new JLabel("Message  : ");
+        // JLabel Msg1 = new JLabel("Message  : ");
         
-        BotPanel.add(Msg1);
+        // BotPanel.add(Msg1);
 
         //Mid Panel
         MidPanel = new JPanel(new BorderLayout());
@@ -85,7 +89,6 @@ public class MainFrame extends JFrame implements ActionListener {
         /*Create Map Instance */
         Map = new JPanel();
         Map.setLayout(new GridLayout(10,10));
-        renderStart();
         Map.setVisible(true);
         
         /*Add panels to Main Frame*/        
@@ -162,11 +165,14 @@ public class MainFrame extends JFrame implements ActionListener {
 //    }
 
     public void renderMsg(JLabel msg){
-        BotPanel.remove(msg);
-        BotPanel.revalidate();
-        BotPanel.repaint();
         BotPanel.add(msg);
         BotPanel.validate();
+    }
+
+    public void clearMsg(){
+        BotPanel.removeAll();
+        BotPanel.revalidate();
+        BotPanel.repaint();
     }
 
     public void renderName(String S){
@@ -198,23 +204,22 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
-    public void renderInventory(String[] List){
-        JLabel InventoryLabel = new JLabel ("Inventory : ");
-        InventoryPanel.add(InventoryLabel);
+    public void renderInventory(String X){
+        JLabel thingName = new JLabel(X);
+        InventoryPanel.add(thingName);
         LeftPanel.add(InventoryPanel);
     }
     
-    public void renderCondition(int water,int money, boolean available){
+    public void clearCondition(){
+        CondPanel.removeAll();
+        CondPanel.revalidate();
+        
+    }
+
+
+    public void renderCondition(int water,long money){
         JLabel WaterLabel = new JLabel ("Water : " + Integer.toString(water));
-        JLabel MoneyLabel = new JLabel ("Money : " + Integer.toString(money));
-        if (available) {
-            JLabel TruckLabel = new JLabel ("Truck : Available" );
-            CondPanel.add(TruckLabel);
-        }
-        else {
-            JLabel TruckLabel = new JLabel ("Truck : Busy" );
-            CondPanel.add(TruckLabel);
-        }
+        JLabel MoneyLabel = new JLabel ("Money : " + Long.toString(money));
         CondPanel.add(WaterLabel);
         CondPanel.add(MoneyLabel);
         LeftPanel.add(CondPanel);                

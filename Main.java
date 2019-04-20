@@ -55,13 +55,18 @@ public class Main {
             TickThread T1 = new TickThread(F);
             T1.start();
 
-            updateMap();
+            //Initialize Map
+            for (int i = 0; i<G.WORLDSIZE; i++){
+                for(int j=0; j<G.WORLDSIZE;j++){
+                    F.renderCell(G.getID(i,j),i,j);
+                }
+            }
+            
+            
             GameMessage = new JLabel("Message : Hello Welcome to Engis Farm");
             ExceptionMessage = new JLabel("Error : Error Messages will be displayed here");
-            GameMessage.setBounds(400, 5, 200, 200);
-            ExceptionMessage.setBounds(400, 20, 200, 200);
             F.renderMsg(GameMessage);
-
+            F.renderMsg(ExceptionMessage);
             while(true) {
 
                 if(listener.getKey()!= 'x'){
@@ -70,16 +75,12 @@ public class Main {
                             G.handleMove(1);
                         } else if (listener.getKey() == 'a') {
                             G.handleMove(4);
-    
                         } else if (listener.getKey() == 's') {
                             G.handleMove(3);
-    
                         } else if (listener.getKey() == 'd') {
                             G.handleMove(2);
-    
                         } else if (listener.getKey() == 't') {
                             GameMessage = new JLabel(G.handleTalk());
-    
                         } else if (listener.getKey() == 'i') {
                             G.handleInteract();
                         } else if (listener.getKey() == 'k') {
@@ -89,12 +90,11 @@ public class Main {
                             System.exit(0);
                         }
                         G.updateGame();
-                        F.renderMsg(GameMessage);
                         updateMap();
                     } catch (EngiException E) {
-                        System.out.println("YoYoYO");
-                        ExceptionMessage = new JLabel(E.getMessage());
-                        F.renderMsg(ExceptionMessage);
+                        System.out.println("Masuk Exception 1");
+                        ExceptionMessage = new JLabel("Error : " + E.getMessage());
+
                         updateMap();
                     }
                     
@@ -105,46 +105,28 @@ public class Main {
                 catch (Exception e) {}
             }
         } catch (EngiException E){
-            System.out.println("Yo");
-            ExceptionMessage = new JLabel(E.getMessage());
-            F.renderMsg(ExceptionMessage);
+            System.out.println("Masuk Exception 2");
+            ExceptionMessage = new JLabel("Error : " + E.getMessage());
             updateMap();
         }
     }
 
     public static void updateMap(){
+        F.clearMsg();
         F.clearMap();
+        F.clearCondition();
         for (int i = 0; i<G.WORLDSIZE; i++){
             for(int j=0; j<G.WORLDSIZE;j++){
                 F.renderCell(G.getID(i,j),i,j);
             }
         }
+        F.renderMsg(GameMessage);
+        F.renderMsg(ExceptionMessage);
+        F.renderCondition(G.getEngi().getWater(), G.getEngi().getMoney());
+        
     }
-
 }
-
-class TickThread extends Thread {
-
-    private MainFrame F;
-    private int count;
-
-    public TickThread(MainFrame frame){
-        F = frame;
-        count = 0;
-    }
-    public void run(){
-        while(true){
-            count++;
-            F.renderTick(count);
-            try { Thread.sleep(1000); }
-            catch (Exception e) {}
-        }
-
-    }
-
-}
-
-
+      
 class MKeyListener extends KeyAdapter {
 
     private char key;
@@ -169,3 +151,28 @@ class MKeyListener extends KeyAdapter {
 
     }
 }
+
+
+
+
+class TickThread extends Thread {
+
+    private MainFrame F;
+    private int count;
+
+    public TickThread(MainFrame frame){
+        F = frame;
+        count = 0;
+    }
+    public void run(){
+        while(true){
+            count++;
+            F.renderTick(count);
+            try { Thread.sleep(1000); }
+            catch (Exception e) {}
+        }
+
+    }
+
+}
+
