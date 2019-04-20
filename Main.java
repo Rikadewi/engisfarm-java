@@ -76,18 +76,23 @@ public class Main {
                     try {
                         if (listener.getKey() == 'w') {
                             G.handleMove(1);
+                            GameMessage = new JLabel("Message : " + playerName + " ke atas!");
                         } else if (listener.getKey() == 'a') {
                             G.handleMove(4);
+                            GameMessage = new JLabel("Message : " +playerName + " ke kiri!");
                         } else if (listener.getKey() == 's') {
                             G.handleMove(3);
+                            GameMessage = new JLabel("Message : " +playerName + " ke bawah!");
                         } else if (listener.getKey() == 'd') {
                             G.handleMove(2);
+                            GameMessage = new JLabel("Message : " +playerName + " ke kanan!");
                         } else if (listener.getKey() == 't') {
                             GameMessage = new JLabel(G.handleTalk());
                         } else if (listener.getKey() == 'i') {
                             G.handleInteract();
                         } else if (listener.getKey() == 'k') {
                             G.handleKill();
+                            GameMessage = new JLabel(playerName + "berusaha Kill");
                         } else if (listener.getKey() == 'g') {
                             G.handleGrow();
                         } else if (listener.getKey() == 'q') {
@@ -95,7 +100,8 @@ public class Main {
                             System.exit(0);
                         }
                         G.updateGame();
-                        G.printKeadaan("Rika");
+                        G.printKeadaan(playerName);
+                        // G.printKeadaan("Rika");
                         // G.printMap();
                         updateMap();
                         
@@ -109,9 +115,9 @@ public class Main {
                     } catch (EngiException E) {
                         System.out.println("Masuk Exception 1");
                         ExceptionMessage = new JLabel("Error : " + E.getMessage());
-
+                        System.out.println(E.getMessage());
                         updateMap();
-                        G.printKeadaan("Rika");
+                        G.printKeadaan(playerName);
                         // G.printMap();
                     }
                     
@@ -141,7 +147,7 @@ public class Main {
             }
             // System.out.println();
         }
-        ArrayList<String> inventory = new ArrayList<String>(G.getInventoryList());
+        ArrayList<String> inventory = G.getInventoryList();
 
         for(int i=0; i<inventory.size(); i++){
             F.renderInventory(inventory.get(i));

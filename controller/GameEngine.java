@@ -368,6 +368,8 @@ public class GameEngine {
             FarmAnimal temp = world[xPlayer][yPlayer - 1].getAnimal();
             getEngi().kill(temp);
             world[xPlayer][yPlayer - 1].updateCell("removeAnimal");
+        } else {
+            throw new EngiException("Kamu tidak boleh membunuh Platypus");
         }
 
     }
@@ -384,7 +386,7 @@ public class GameEngine {
         for (int i = 0; i < WORLDSIZE; i++) {
             for (int j = 0; j < WORLDSIZE; j++) {
                 if (getID(i, j) < 13) { //Jika merupakan animal
-                    System.out.println("msk iterasi coy");
+                    // System.out.println("msk iterasi coy");
                     world[i][j].updateCell("checkAnimal");
                     //Bikin Animal tsb makan
                     world[i][j].updateCell("makan");

@@ -27,7 +27,7 @@ public abstract class FarmAnimal{
 
     public void makan(){
         if (hungry){
-            System.out.println("MAKAAAN");
+            // System.out.println("MAKAAAN");
             livingTime = DEFAULTLIVINGTIME;
             hasProduct = true;
             setHungry(false);
