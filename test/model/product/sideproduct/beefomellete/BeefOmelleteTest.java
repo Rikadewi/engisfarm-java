@@ -12,7 +12,7 @@ public class BeefOmelleteTest {
     public void beefomellete_test(){
         System.out.println("BeefOmellete Test");
         System.out.println("Id and harga test");
-        assertEquals(7,c.getID());
+        assertEquals(7,c.getIdProduct());
         assertEquals(60000,c.getHarga());
     }
 

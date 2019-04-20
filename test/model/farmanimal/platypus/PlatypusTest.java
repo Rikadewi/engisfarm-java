@@ -38,7 +38,7 @@ public class PlatypusTest {
         try{
             f = b.getProduct(false);
             boolean id = false;
-            if (f.getID() == 5 || f.getID() == 6)
+            if (f.getIdProduct() == 5 || f.getIdProduct() == 6)
                 id = true;
             assertTrue(id);
         }catch (EngiException e){
@@ -56,7 +56,7 @@ public class PlatypusTest {
         try{
             f = b.getProduct(true);
             boolean id = false;
-            if (f.getID() == 5 || f.getID() == 6)
+            if (f.getIdProduct() == 5 || f.getIdProduct() == 6)
                 id = true;
             assertFalse(id);
         }catch (EngiException e){
@@ -74,7 +74,7 @@ public class PlatypusTest {
         try{
             f = b.getProduct(false);
             boolean id = false;
-            if (f.getID() == 5 || f.getID() == 6)
+            if (f.getIdProduct() == 5 || f.getIdProduct() == 6)
                 id = true;
             assertFalse(id);
         }catch (EngiException e){
@@ -90,7 +90,7 @@ public class PlatypusTest {
 
     @Test
     public void getIdTest(){
-        System.out.println("getID test");
+        System.out.println("getIdProduct test");
         b.setHungry(true);
         assertEquals(9,b.getId());
         b.setHungry(false);

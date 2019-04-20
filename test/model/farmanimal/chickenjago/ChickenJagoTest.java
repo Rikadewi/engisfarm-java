@@ -33,7 +33,7 @@ public class ChickenJagoTest {
         boolean err = false;
         try{
             f = b.getProduct(true);
-            assertEquals(f.getID(),2);
+            assertEquals(f.getIdProduct(),2);
         }catch (EngiException e){
             if (e.getMessage().equals("ChickenJago tidak memiliki telur")){
                 err = true;
@@ -53,7 +53,7 @@ public class ChickenJagoTest {
 
     @Test
     public void getIdTest(){
-        System.out.println("getID test");
+        System.out.println("getIdProduct test");
         b.setHungry(true);
         assertEquals(3,b.getId());
         b.setHungry(false);

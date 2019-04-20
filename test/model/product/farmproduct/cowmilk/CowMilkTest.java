@@ -12,7 +12,7 @@ public class CowMilkTest {
     public void cowmilk_test(){
         System.out.println("CowMilk Test");
         System.out.println("Id and harga test");
-        assertEquals(4,c.getID());
+        assertEquals(4,c.getIdProduct());
         assertEquals(15000,c.getHarga());
     }
 }

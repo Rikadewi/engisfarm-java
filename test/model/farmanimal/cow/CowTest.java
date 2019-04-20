@@ -34,7 +34,7 @@ public class CowTest {
         try {
             b.setHungry(false);
             f = b.getProduct(true);
-            assertEquals(f.getID(), 3);
+            assertEquals(f.getIdProduct(), 3);
         } catch (EngiException e) {
             if (e.getMessage().equals("sapi ini tidak memiliki susu saat ini")) {
                 err = true;
@@ -46,7 +46,7 @@ public class CowTest {
             b.setHungry(true);
             b.makan();
             f = b.getProduct(false);
-            assertEquals(f.getID(), 4);
+            assertEquals(f.getIdProduct(), 4);
         } catch (EngiException e) {
             if (e.getMessage().equals("sapi ini tidak memiliki susu saat ini")) {
                 err = true;
@@ -57,7 +57,7 @@ public class CowTest {
         try {
             b.setHungry(false);
             f = b.getProduct(false);
-            assertEquals(f.getID(), 4);
+            assertEquals(f.getIdProduct(), 4);
         } catch (EngiException e) {
             if (e.getMessage().equals("sapi ini tidak memiliki susu saat ini")) {
                 err = true;
@@ -69,7 +69,7 @@ public class CowTest {
 
     @Test
     public void getIdTest() {
-        System.out.println("getID test");
+        System.out.println("getIdProduct test");
         b.setHungry(true);
         assertEquals(5, b.getId());
         b.setHungry(false);

@@ -4,33 +4,33 @@ import model.EngiException;
 import model.product.farmproduct.FarmProduct;
 
 public abstract class FarmAnimal{
-    public final int default_living_time = 5;
-    public final int default_hungry_time = 5;
+    public final int DEFAULTLIVINGTIME = 5;
+    public final int DEFAULTHUNGRYTIME = 5;
     private boolean hungry;
     protected boolean hasProduct;
     private boolean hasMoved;
     protected boolean egg;
     protected boolean milk;
     protected boolean meat;
-    private int living_time;
-    private int hungry_time;
+    private int livingTime;
+    private int hungryTime;
     protected static int jumlah = 0;
 
     public FarmAnimal(){
         hungry = true;
 	    hasProduct = false;
-        hungry_time = default_hungry_time;
-        living_time = default_living_time;
+        hungryTime = DEFAULTHUNGRYTIME;
+        livingTime = DEFAULTLIVINGTIME;
         jumlah++;
         hasMoved = false;
     }
 
     public void makan(){
         if (hungry){
-            living_time = default_living_time;
+            livingTime = DEFAULTLIVINGTIME;
             hasProduct = true;
             setHungry(false);
-            hungry_time = default_hungry_time;
+            hungryTime = DEFAULTHUNGRYTIME;
         }
     }
 
@@ -49,22 +49,22 @@ public abstract class FarmAnimal{
     }
     public void updateHungryTime(){
         if(!hungry){
-            hungry_time--;
-            if(hungry_time==0){
+            hungryTime--;
+            if(hungryTime ==0){
                 hungry = true;
-                living_time = default_living_time;
+                livingTime = DEFAULTLIVINGTIME;
             }
         }
     }
     
     public void updateLivingTime(){
         if(hungry){
-            living_time--;
+            livingTime--;
         }
     }
     
     public int getLivingTime(){
-        return living_time;
+        return livingTime;
     }
     public abstract int getId();
     public abstract String bersuara();

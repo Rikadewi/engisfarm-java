@@ -28,8 +28,8 @@ public class Player {
 
     //menerima input Farm Animal
     //mencetak di layar suara animal tersebut
-    public String talk(FarmAnimal F){
-        return F.bersuara();
+    public String talk(FarmAnimal f){
+        return f.bersuara();
     }
 
     public void interactWell() throws EngiException{
@@ -56,7 +56,7 @@ public class Player {
         //cari chicken egg = 1
         while (idx1<=inventory.getLastIdx() && !found1){
             Product temp = inventory.getElmt(idx1);
-            if (temp.getID()==1){
+            if (temp.getIdProduct()==1){
                 found1 = true;
             }else{
                 idx1++;
@@ -65,7 +65,7 @@ public class Player {
         //cari cowmeat = 3
         while (idx2<=inventory.getLastIdx() && !found2){
             Product temp = inventory.getElmt(idx2);
-            if (temp.getID()==3){
+            if (temp.getIdProduct()==3){
                 found2 = true;
             }else{
                 idx2++;
@@ -76,8 +76,8 @@ public class Player {
             hasMix = true;
             inventory.removeAt(idx1);
             inventory.removeAt(idx2);
-            SideProduct beefomellete = new BeefOmellete();
-            inventory.add(beefomellete);
+            SideProduct omellete = new BeefOmellete();
+            inventory.add(omellete);
         }
 
         //jika belom mix
@@ -90,7 +90,7 @@ public class Player {
             //cari platypus egg = 5
             while (idx1<=inventory.getLastIdx() && !found1){
                 Product temp = inventory.getElmt(idx1);
-                if (temp.getID()==5){
+                if (temp.getIdProduct()==5){
                     found1 = true;
                 }else{
                     idx1++;
@@ -99,7 +99,7 @@ public class Player {
             //cari cowmilk = 4
             while (idx2<=inventory.getLastIdx() && !found2){
                 Product temp = inventory.getElmt(idx2);
-                if (temp.getID()==4){
+                if (temp.getIdProduct()==4){
                     found2 = true;
                 }else{
                     idx2++;
@@ -110,8 +110,8 @@ public class Player {
                 hasMix = true;
                 inventory.removeAt(idx1);
                 inventory.removeAt(idx2);
-                SideProduct platycowpancake = new PlatycowPancake();
-                inventory.add(platycowpancake);
+                SideProduct pancake = new PlatycowPancake();
+                inventory.add(pancake);
             }
         }
 
@@ -125,7 +125,7 @@ public class Player {
             //cari platypus milk = 6
             while (idx1<=inventory.getLastIdx() && !found1){
                 Product temp = inventory.getElmt(idx1);
-                if (temp.getID()==6){
+                if (temp.getIdProduct()==6){
                     found1 = true;
                 }else{
                     idx1++;
@@ -134,7 +134,7 @@ public class Player {
             //cari chickenmeat = 2
             while (idx2<=inventory.getLastIdx() && !found2){
                 Product temp = inventory.getElmt(idx2);
-                if (temp.getID()==2){
+                if (temp.getIdProduct()==2){
                     found2 = true;
                 }else{
                     idx2++;
@@ -145,8 +145,8 @@ public class Player {
                 hasMix = true;
                 inventory.removeAt(idx1);
                 inventory.removeAt(idx2);
-                SideProduct plachicksoup = new PlachickSoup();
-                inventory.add(plachicksoup);
+                SideProduct soup = new PlachickSoup();
+                inventory.add(soup);
             }
         }
     }
@@ -171,13 +171,13 @@ public class Player {
     //throw exception jika animal lapar
     //mendapatkan product jika inventory masih cukup
     //throw "Inventory penuh" jika inventory penuh
-    public void interact(FarmAnimal F) throws EngiException{
-        if(F.isMeat() && !F.isEgg() && !F.isMilk()){
+    public void interact(FarmAnimal f) throws EngiException{
+        if(f.isMeat() && !f.isEgg() && !f.isMilk()){
             throw new EngiException("Tidak bisa berinteraksi dengan animal yang meat producing only");
         }else{
-            if(inventory.getNeff() < MAXBAG){
+            if(inventory.getNEff() < MAXBAG){
                 try{
-                    inventory.add(F.getProduct(false));
+                    inventory.add(f.getProduct(false));
                 }catch (EngiException s){
                     throw s;
                 }
@@ -192,9 +192,9 @@ public class Player {
     //throw exception jika animal lapar
     //throw "Bukan meat producing animal" jika input bukan meat producing animal
     //throw "Inventory penuh" jika inventory penuh
-    public void kill(FarmAnimal F) throws EngiException{
-        if(inventory.getNeff() < MAXBAG){
-            inventory.add(F.getProduct(true));
+    public void kill(FarmAnimal f) throws EngiException{
+        if(inventory.getNEff() < MAXBAG){
+            inventory.add(f.getProduct(true));
         }else{
             throw new EngiException("Inventory penuh");
         }
