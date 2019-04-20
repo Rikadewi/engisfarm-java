@@ -11,7 +11,7 @@ void renderTest(){
     Truck t;
     CU_ASSERT_EQUAL(t.render(),21);
 }
-
+""
 void updateCellTest(){
     Truck t;
     t.setNotReady();
