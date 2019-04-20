@@ -1,0 +1,1566 @@
+
+--------------------------------------------------
+- Package: Default
+--------------------------------------------------
+
+Stats:
+    Total Classes: 4
+    Concrete Classes: 4
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 12
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    MKeyListener
+    ModuleDependenciesTest
+    TickThread
+    ui
+
+Depends Upon:
+    fit
+    fit.exception
+    java.awt
+    java.awt.event
+    java.io
+    java.lang
+    java.util
+    javax.swing
+    jdepend.framework
+    junit.framework
+    moduleDependencyFixture
+    view
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: a
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 2
+    Ce: 2
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    a.x
+
+Depends Upon:
+    b
+    java.lang
+
+Used By:
+    b
+    c
+
+--------------------------------------------------
+- Package: b
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 3
+
+    A: 0
+    I: 0.75
+    D: 0.25
+
+Abstract Classes:
+
+Concrete Classes:
+    b.x
+
+Depends Upon:
+    a
+    d
+    java.lang
+
+Used By:
+    a
+
+--------------------------------------------------
+- Package: c
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 2
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    c.x
+
+Depends Upon:
+    a
+    java.lang
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: d
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    d.x
+
+Depends Upon:
+    java.lang
+
+Used By:
+    b
+
+--------------------------------------------------
+- Package: fit
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: fit.exception
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: fitnesse.fixtures
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.awt
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.awt.event
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.io
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.lang
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.lang.reflect
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.math
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.net
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.rmi
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.sql
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.text
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.util
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.util.jar
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.util.zip
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: javax.swing
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: javax.swing.event
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: javax.swing.tree
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: jdepend.framework
+--------------------------------------------------
+
+Stats:
+    Total Classes: 22
+    Concrete Classes: 18
+    Abstract Classes: 4
+
+    Ca: 5
+    Ce: 11
+
+    A: 0.18
+    I: 0.69
+    D: 0.13
+
+Abstract Classes:
+    jdepend.framework.AbstractParser
+    jdepend.framework.ExampleAbstractClass
+    jdepend.framework.ExampleInterface
+    jdepend.framework.ParserListener
+
+Concrete Classes:
+    jdepend.framework.ClassFileParser
+    jdepend.framework.ClassFileParser$AttributeInfo
+    jdepend.framework.ClassFileParser$Constant
+    jdepend.framework.ClassFileParser$FieldOrMethodInfo
+    jdepend.framework.DependencyConstraint
+    jdepend.framework.ExampleConcreteClass
+    jdepend.framework.ExampleConcreteClass$ExampleInnerClass
+    jdepend.framework.ExamplePackageClass
+    jdepend.framework.FileManager
+    jdepend.framework.JDepend
+    jdepend.framework.JavaClass
+    jdepend.framework.JavaClass$ClassComparator
+    jdepend.framework.JavaClassBuilder
+    jdepend.framework.JavaClassBuilder$1
+    jdepend.framework.JavaPackage
+    jdepend.framework.PackageComparator
+    jdepend.framework.PackageFilter
+    jdepend.framework.PropertyConfigurator
+
+Depends Upon:
+    java.io
+    java.lang
+    java.lang.reflect
+    java.math
+    java.net
+    java.rmi
+    java.sql
+    java.text
+    java.util
+    java.util.jar
+    java.util.zip
+
+Used By:
+    Default
+    jdepend.swingui
+    jdepend.textui
+    jdepend.xmlui
+    moduleDependencyFixture
+
+--------------------------------------------------
+- Package: jdepend.swingui
+--------------------------------------------------
+
+Stats:
+    Total Classes: 19
+    Concrete Classes: 18
+    Abstract Classes: 1
+
+    Ca: 0
+    Ce: 10
+
+    A: 0.05
+    I: 1
+    D: 0.05
+
+Abstract Classes:
+    jdepend.swingui.PackageNode
+
+Concrete Classes:
+    jdepend.swingui.AboutDialog
+    jdepend.swingui.AboutDialog$1
+    jdepend.swingui.AboutDialog$2
+    jdepend.swingui.AfferentNode
+    jdepend.swingui.DependTree
+    jdepend.swingui.DependTreeModel
+    jdepend.swingui.EfferentNode
+    jdepend.swingui.JDepend
+    jdepend.swingui.JDepend$1
+    jdepend.swingui.JDepend$2
+    jdepend.swingui.JDepend$3
+    jdepend.swingui.JDepend$4
+    jdepend.swingui.JDepend$5
+    jdepend.swingui.JDepend$6
+    jdepend.swingui.JDepend$AboutAction
+    jdepend.swingui.JDepend$ExitAction
+    jdepend.swingui.JDepend$TreeListener
+    jdepend.swingui.StatusPanel
+
+Depends Upon:
+    java.awt
+    java.awt.event
+    java.io
+    java.lang
+    java.text
+    java.util
+    javax.swing
+    javax.swing.event
+    javax.swing.tree
+    jdepend.framework
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: jdepend.textui
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 5
+
+    A: 0
+    I: 0.83
+    D: 0.17
+
+Abstract Classes:
+
+Concrete Classes:
+    jdepend.textui.JDepend
+
+Depends Upon:
+    java.io
+    java.lang
+    java.text
+    java.util
+    jdepend.framework
+
+Used By:
+    jdepend.xmlui
+
+--------------------------------------------------
+- Package: jdepend.xmlui
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 6
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    jdepend.xmlui.JDepend
+
+Depends Upon:
+    java.io
+    java.lang
+    java.text
+    java.util
+    jdepend.framework
+    jdepend.textui
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: junit.framework
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: model
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 14
+    Ce: 1
+
+    A: 0
+    I: 0.07
+    D: 0.93
+
+Abstract Classes:
+
+Concrete Classes:
+    model.EngiException
+
+Depends Upon:
+    java.lang
+
+Used By:
+    model.cell
+    model.cell.facility
+    model.cell.facility.truck
+    model.cell.facility.well
+    model.cell.land
+    model.farmanimal
+    model.farmanimal.bull
+    model.farmanimal.chickenjago
+    model.farmanimal.chickenkampung
+    model.farmanimal.cow
+    model.farmanimal.goldenplatypus
+    model.farmanimal.platypus
+    model.list
+    model.player
+
+--------------------------------------------------
+- Package: model.cell
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 0
+    Abstract Classes: 1
+
+    Ca: 2
+    Ce: 4
+
+    A: 1
+    I: 0.67
+    D: 0.67
+
+Abstract Classes:
+    model.cell.Cell
+
+Concrete Classes:
+
+Depends Upon:
+    java.lang
+    model
+    model.farmanimal
+    model.player
+
+Used By:
+    model.cell.facility
+    model.cell.land
+
+--------------------------------------------------
+- Package: model.cell.facility
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 0
+    Abstract Classes: 1
+
+    Ca: 3
+    Ce: 3
+
+    A: 1
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+    model.cell.facility.Facility
+
+Concrete Classes:
+
+Depends Upon:
+    model
+    model.cell
+    model.farmanimal
+
+Used By:
+    model.cell.facility.mixer
+    model.cell.facility.truck
+    model.cell.facility.well
+
+--------------------------------------------------
+- Package: model.cell.facility.mixer
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 2
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.cell.facility.mixer.Mixer
+
+Depends Upon:
+    java.lang
+    model.cell.facility
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.cell.facility.truck
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 3
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.cell.facility.truck.Truck
+
+Depends Upon:
+    java.lang
+    model
+    model.cell.facility
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.cell.facility.well
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 4
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.cell.facility.well.Well
+
+Depends Upon:
+    java.lang
+    model
+    model.cell.facility
+    model.player
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.cell.land
+--------------------------------------------------
+
+Stats:
+    Total Classes: 2
+    Concrete Classes: 2
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 7
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.cell.land.Land
+    model.cell.land.Land$1
+
+Depends Upon:
+    java.io
+    java.lang
+    java.util
+    model
+    model.cell
+    model.farmanimal
+    model.player
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.farmanimal
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 0
+    Abstract Classes: 1
+
+    Ca: 10
+    Ce: 3
+
+    A: 1
+    I: 0.23
+    D: 0.23
+
+Abstract Classes:
+    model.farmanimal.FarmAnimal
+
+Concrete Classes:
+
+Depends Upon:
+    java.lang
+    model
+    model.product.farmproduct
+
+Used By:
+    model.cell
+    model.cell.facility
+    model.cell.land
+    model.farmanimal.bull
+    model.farmanimal.chickenjago
+    model.farmanimal.chickenkampung
+    model.farmanimal.cow
+    model.farmanimal.goldenplatypus
+    model.farmanimal.platypus
+    model.player
+
+--------------------------------------------------
+- Package: model.farmanimal.bull
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 5
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.farmanimal.bull.Bull
+
+Depends Upon:
+    java.lang
+    model
+    model.farmanimal
+    model.product.farmproduct
+    model.product.farmproduct.cowmeat
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.farmanimal.chickenjago
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 5
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.farmanimal.chickenjago.ChickenJago
+
+Depends Upon:
+    java.lang
+    model
+    model.farmanimal
+    model.product.farmproduct
+    model.product.farmproduct.chickenmeat
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.farmanimal.chickenkampung
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 6
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.farmanimal.chickenkampung.ChickenKampung
+
+Depends Upon:
+    java.lang
+    model
+    model.farmanimal
+    model.product.farmproduct
+    model.product.farmproduct.chickenegg
+    model.product.farmproduct.chickenmeat
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.farmanimal.cow
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 6
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.farmanimal.cow.Cow
+
+Depends Upon:
+    java.lang
+    model
+    model.farmanimal
+    model.product.farmproduct
+    model.product.farmproduct.cowmeat
+    model.product.farmproduct.cowmilk
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.farmanimal.goldenplatypus
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 7
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.farmanimal.goldenplatypus.GoldenPlatypus
+
+Depends Upon:
+    java.lang
+    java.util
+    model
+    model.farmanimal
+    model.product.farmproduct
+    model.product.farmproduct.platypusegg
+    model.product.farmproduct.platypusmilk
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.farmanimal.platypus
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 7
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    model.farmanimal.platypus.Platypus
+
+Depends Upon:
+    java.lang
+    java.util
+    model
+    model.farmanimal
+    model.product.farmproduct
+    model.product.farmproduct.platypusegg
+    model.product.farmproduct.platypusmilk
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: model.list
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 2
+
+    A: 0
+    I: 0.67
+    D: 0.33
+
+Abstract Classes:
+
+Concrete Classes:
+    model.list.List
+
+Depends Upon:
+    java.lang
+    model
+
+Used By:
+    model.player
+
+--------------------------------------------------
+- Package: model.player
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 3
+    Ce: 8
+
+    A: 0
+    I: 0.73
+    D: 0.27
+
+Abstract Classes:
+
+Concrete Classes:
+    model.player.Player
+
+Depends Upon:
+    java.lang
+    model
+    model.farmanimal
+    model.list
+    model.product
+    model.product.sideproduct.beefomellete
+    model.product.sideproduct.plachicksoup
+    model.product.sideproduct.platycowpancake
+
+Used By:
+    model.cell
+    model.cell.facility.well
+    model.cell.land
+
+--------------------------------------------------
+- Package: model.product
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 3
+    Ce: 1
+
+    A: 0
+    I: 0.25
+    D: 0.75
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.Product
+
+Depends Upon:
+    java.lang
+
+Used By:
+    model.player
+    model.product.farmproduct
+    model.product.sideproduct
+
+--------------------------------------------------
+- Package: model.product.farmproduct
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 13
+    Ce: 1
+
+    A: 0
+    I: 0.07
+    D: 0.93
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.FarmProduct
+
+Depends Upon:
+    model.product
+
+Used By:
+    model.farmanimal
+    model.farmanimal.bull
+    model.farmanimal.chickenjago
+    model.farmanimal.chickenkampung
+    model.farmanimal.cow
+    model.farmanimal.goldenplatypus
+    model.farmanimal.platypus
+    model.product.farmproduct.chickenegg
+    model.product.farmproduct.chickenmeat
+    model.product.farmproduct.cowmeat
+    model.product.farmproduct.cowmilk
+    model.product.farmproduct.platypusegg
+    model.product.farmproduct.platypusmilk
+
+--------------------------------------------------
+- Package: model.product.farmproduct.chickenegg
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.chickenegg.ChickenEgg
+
+Depends Upon:
+    model.product.farmproduct
+
+Used By:
+    model.farmanimal.chickenkampung
+
+--------------------------------------------------
+- Package: model.product.farmproduct.chickenmeat
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 2
+    Ce: 1
+
+    A: 0
+    I: 0.33
+    D: 0.67
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.chickenmeat.ChickenMeat
+
+Depends Upon:
+    model.product.farmproduct
+
+Used By:
+    model.farmanimal.chickenjago
+    model.farmanimal.chickenkampung
+
+--------------------------------------------------
+- Package: model.product.farmproduct.cowmeat
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 2
+    Ce: 1
+
+    A: 0
+    I: 0.33
+    D: 0.67
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.cowmeat.CowMeat
+
+Depends Upon:
+    model.product.farmproduct
+
+Used By:
+    model.farmanimal.bull
+    model.farmanimal.cow
+
+--------------------------------------------------
+- Package: model.product.farmproduct.cowmilk
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.cowmilk.CowMilk
+
+Depends Upon:
+    model.product.farmproduct
+
+Used By:
+    model.farmanimal.cow
+
+--------------------------------------------------
+- Package: model.product.farmproduct.platypusegg
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 2
+    Ce: 1
+
+    A: 0
+    I: 0.33
+    D: 0.67
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.platypusegg.PlatypusEgg
+
+Depends Upon:
+    model.product.farmproduct
+
+Used By:
+    model.farmanimal.goldenplatypus
+    model.farmanimal.platypus
+
+--------------------------------------------------
+- Package: model.product.farmproduct.platypusmilk
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 2
+    Ce: 1
+
+    A: 0
+    I: 0.33
+    D: 0.67
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.farmproduct.platypusmilk.PlatypusMilk
+
+Depends Upon:
+    model.product.farmproduct
+
+Used By:
+    model.farmanimal.goldenplatypus
+    model.farmanimal.platypus
+
+--------------------------------------------------
+- Package: model.product.sideproduct
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 3
+    Ce: 1
+
+    A: 0
+    I: 0.25
+    D: 0.75
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.sideproduct.SideProduct
+
+Depends Upon:
+    model.product
+
+Used By:
+    model.product.sideproduct.beefomellete
+    model.product.sideproduct.plachicksoup
+    model.product.sideproduct.platycowpancake
+
+--------------------------------------------------
+- Package: model.product.sideproduct.beefomellete
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.sideproduct.beefomellete.BeefOmellete
+
+Depends Upon:
+    model.product.sideproduct
+
+Used By:
+    model.player
+
+--------------------------------------------------
+- Package: model.product.sideproduct.plachicksoup
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.sideproduct.plachicksoup.PlachickSoup
+
+Depends Upon:
+    model.product.sideproduct
+
+Used By:
+    model.player
+
+--------------------------------------------------
+- Package: model.product.sideproduct.platycowpancake
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    model.product.sideproduct.platycowpancake.PlatycowPancake
+
+Depends Upon:
+    model.product.sideproduct
+
+Used By:
+    model.player
+
+--------------------------------------------------
+- Package: moduleDependencyFixture
+--------------------------------------------------
+
+Stats:
+    Total Classes: 3
+    Concrete Classes: 3
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 8
+
+    A: 0
+    I: 0.89
+    D: 0.11
+
+Abstract Classes:
+
+Concrete Classes:
+    moduleDependencyFixture.ModuleDependencies
+    moduleDependencyFixture.ModuleDependenciesTest
+    moduleDependencyFixture.ModuleDependencyPaths
+
+Depends Upon:
+    fit
+    fit.exception
+    fitnesse.fixtures
+    java.io
+    java.lang
+    java.util
+    jdepend.framework
+    junit.framework
+
+Used By:
+    Default
+
+--------------------------------------------------
+- Package: moduleDependencyFixture.test.a
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 2
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    moduleDependencyFixture.test.a.x
+
+Depends Upon:
+    java.lang
+    moduleDependencyFixture.test.b
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: moduleDependencyFixture.test.b
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 2
+
+    A: 0
+    I: 0.67
+    D: 0.33
+
+Abstract Classes:
+
+Concrete Classes:
+    moduleDependencyFixture.test.b.x
+
+Depends Upon:
+    java.lang
+    moduleDependencyFixture.test.c.one
+
+Used By:
+    moduleDependencyFixture.test.a
+
+--------------------------------------------------
+- Package: moduleDependencyFixture.test.c
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 1
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    moduleDependencyFixture.test.c.x
+
+Depends Upon:
+    java.lang
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: moduleDependencyFixture.test.c.one
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 2
+
+    A: 0
+    I: 0.67
+    D: 0.33
+
+Abstract Classes:
+
+Concrete Classes:
+    moduleDependencyFixture.test.c.one.x
+
+Depends Upon:
+    java.lang
+    moduleDependencyFixture.test.c.two
+
+Used By:
+    moduleDependencyFixture.test.b
+
+--------------------------------------------------
+- Package: moduleDependencyFixture.test.c.two
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 1
+
+    A: 0
+    I: 0.5
+    D: 0.5
+
+Abstract Classes:
+
+Concrete Classes:
+    moduleDependencyFixture.test.c.two.x
+
+Depends Upon:
+    java.lang
+
+Used By:
+    moduleDependencyFixture.test.c.one
+
+--------------------------------------------------
+- Package: view
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+
+--------------------------------------------------
+- Package Dependency Cycles:
+--------------------------------------------------
+
+a
+    |
+    |   b
+    |-> a
+
+b
+    |
+    |   a
+    |-> b
+
+c
+    |
+    |-> a
+    |   b
+    |-> a
+
+
+--------------------------------------------------
+- Summary:
+--------------------------------------------------
+
+Name, Class Count, Abstract Class Count, Ca, Ce, A, I, D, V:
+
+Default,4,0,0,12,0,1,0,1
+a,1,0,2,2,0,0.5,0.5,1
+b,1,0,1,3,0,0.75,0.25,1
+c,1,0,0,2,0,1,0,1
+d,1,0,1,1,0,0.5,0.5,1
+fit,0,0,2,0,0,0,1,1
+fit.exception,0,0,2,0,0,0,1,1
+fitnesse.fixtures,0,0,1,0,0,0,1,1
+java.awt,0,0,2,0,0,0,1,1
+java.awt.event,0,0,2,0,0,0,1,1
+java.io,0,0,7,0,0,0,1,1
+java.lang,0,0,31,0,0,0,1,1
+java.lang.reflect,0,0,1,0,0,0,1,1
+java.math,0,0,1,0,0,0,1,1
+java.net,0,0,1,0,0,0,1,1
+java.rmi,0,0,1,0,0,0,1,1
+java.sql,0,0,1,0,0,0,1,1
+java.text,0,0,4,0,0,0,1,1
+java.util,0,0,9,0,0,0,1,1
+java.util.jar,0,0,1,0,0,0,1,1
+java.util.zip,0,0,1,0,0,0,1,1
+javax.swing,0,0,2,0,0,0,1,1
+javax.swing.event,0,0,1,0,0,0,1,1
+javax.swing.tree,0,0,1,0,0,0,1,1
+jdepend.framework,22,4,5,11,0.18,0.69,0.13,1
+jdepend.swingui,19,1,0,10,0.05,1,0.05,1
+jdepend.textui,1,0,1,5,0,0.83,0.17,1
+jdepend.xmlui,1,0,0,6,0,1,0,1
+junit.framework,0,0,2,0,0,0,1,1
+model,1,0,14,1,0,0.07,0.93,1
+model.cell,1,1,2,4,1,0.67,0.67,1
+model.cell.facility,1,1,3,3,1,0.5,0.5,1
+model.cell.facility.mixer,1,0,0,2,0,1,0,1
+model.cell.facility.truck,1,0,0,3,0,1,0,1
+model.cell.facility.well,1,0,0,4,0,1,0,1
+model.cell.land,2,0,0,7,0,1,0,1
+model.farmanimal,1,1,10,3,1,0.23,0.23,1
+model.farmanimal.bull,1,0,0,5,0,1,0,1
+model.farmanimal.chickenjago,1,0,0,5,0,1,0,1
+model.farmanimal.chickenkampung,1,0,0,6,0,1,0,1
+model.farmanimal.cow,1,0,0,6,0,1,0,1
+model.farmanimal.goldenplatypus,1,0,0,7,0,1,0,1
+model.farmanimal.platypus,1,0,0,7,0,1,0,1
+model.list,1,0,1,2,0,0.67,0.33,1
+model.player,1,0,3,8,0,0.73,0.27,1
+model.product,1,0,3,1,0,0.25,0.75,1
+model.product.farmproduct,1,0,13,1,0,0.07,0.93,1
+model.product.farmproduct.chickenegg,1,0,1,1,0,0.5,0.5,1
+model.product.farmproduct.chickenmeat,1,0,2,1,0,0.33,0.67,1
+model.product.farmproduct.cowmeat,1,0,2,1,0,0.33,0.67,1
+model.product.farmproduct.cowmilk,1,0,1,1,0,0.5,0.5,1
+model.product.farmproduct.platypusegg,1,0,2,1,0,0.33,0.67,1
+model.product.farmproduct.platypusmilk,1,0,2,1,0,0.33,0.67,1
+model.product.sideproduct,1,0,3,1,0,0.25,0.75,1
+model.product.sideproduct.beefomellete,1,0,1,1,0,0.5,0.5,1
+model.product.sideproduct.plachicksoup,1,0,1,1,0,0.5,0.5,1
+model.product.sideproduct.platycowpancake,1,0,1,1,0,0.5,0.5,1
+moduleDependencyFixture,3,0,1,8,0,0.89,0.11,1
+moduleDependencyFixture.test.a,1,0,0,2,0,1,0,1
+moduleDependencyFixture.test.b,1,0,1,2,0,0.67,0.33,1
+moduleDependencyFixture.test.c,1,0,0,1,0,1,0,1
+moduleDependencyFixture.test.c.one,1,0,1,2,0,0.67,0.33,1
+moduleDependencyFixture.test.c.two,1,0,1,1,0,0.5,0.5,1
+view,0,0,1,0,0,0,1,1
